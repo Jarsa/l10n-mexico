@@ -1,0 +1,43 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_partner_cif
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-06 16:30+0000\n"
+"PO-Revision-Date: 2022-06-06 11:31-0500\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: l10n_mx_partner_cif
+#: model_terms:ir.ui.view,arch_db:l10n_mx_partner_cif.view_partner_form
+msgid ""
+"<span attrs=\"{'invisible': [('cif_file', '=', False)]}\" colspan=\"2\">The "
+"CIF file uses OCR technology to automate the input.<br/>You need to "
+"validate if the information corresponds to CIF.<br/>It may happen that a "
+"field is not filled, in that case you need to define it manually.</span>"
+msgstr ""
+"<span attrs=\"{'invisible': [('cif_file', '=', False)]}\" colspan=\"2\">El "
+"archivo CIF utiliza tecnología OCR para automatizar la captura.<br/> Es "
+"necesario validar si la información concuerda con el CIF.<br/> Puede "
+"suceder que un campo no se llene, en ese caso deberá definirlo manualmente."
+"</span>"
+
+#. module: l10n_mx_partner_cif
+#: model:ir.model.fields,field_description:l10n_mx_partner_cif.field_res_partner__cif_file
+#: model:ir.model.fields,field_description:l10n_mx_partner_cif.field_res_users__cif_file
+msgid "Attach CIF File"
+msgstr "Adjuntar archivo CIF"
+
+#. module: l10n_mx_partner_cif
+#: model:ir.model,name:l10n_mx_partner_cif.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
