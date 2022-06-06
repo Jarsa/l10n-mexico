@@ -1,0 +1,142 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-06 15:45+0000\n"
+"PO-Revision-Date: 2022-06-06 10:47-0500\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__622
+msgid "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__606
+msgid "Arrendamiento"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__609
+msgid "Consolidación"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model,name:l10n_mx_partner.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__624
+msgid "Coordinados"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__608
+msgid "Demás ingresos"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields,field_description:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
+#: model:ir.model.fields,field_description:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
+msgid "Fiscal Regime"
+msgstr "Régimen Físcal"
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__601
+msgid "General de Ley Personas Morales"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__621
+msgid "Incorporación Fiscal"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__611
+msgid "Ingresos por Dividendos (socios y accionistas)"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__614
+msgid "Ingresos por intereses"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields,help:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
+#: model:ir.model.fields,help:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
+msgid ""
+"It is used to fill Mexican XML CFDI required field Comprobante.Receptor."
+"RegimenFiscalReceptor."
+msgstr ""
+"Es usado para llenar el CFDI Mexicano, campo requerido para Comprobante."
+"Receptor.RegimenFiscalReceptor."
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__623
+msgid "Opcional para Grupos de Sociedades"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__612
+msgid "Personas Físicas con Actividades Empresariales y Profesionales"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__603
+msgid "Personas Morales con Fines no Lucrativos"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__610
+msgid "Residentes en el Extranjero sin Establecimiento Permanente en México"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__626
+msgid "Régimen Simplificado de Confianza - RESICO"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__607
+msgid "Régimen de Enajenación o Adquisición de Bienes"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__625
+msgid ""
+"Régimen de las Actividades Empresariales con ingresos a través de "
+"Plataformas Tecnológicas"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__615
+msgid "Régimen de los ingresos por obtención de premios"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__616
+msgid "Sin obligaciones fiscales"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__620
+msgid ""
+"Sociedades Cooperativas de Producción que optan por diferir sus ingresos"
+msgstr ""
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__605
+msgid "Sueldos y Salarios e Ingresos Asimilados a Salarios"
+msgstr ""
