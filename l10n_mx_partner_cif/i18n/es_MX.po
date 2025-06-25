@@ -4,32 +4,32 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 16:30+0000\n"
-"PO-Revision-Date: 2022-06-06 11:31-0500\n"
+"POT-Creation-Date: 2025-06-25 16:32+0000\n"
+"PO-Revision-Date: 2025-06-25 10:32-0600\n"
 "Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
 "Language-Team: \n"
 "Language: es_MX\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
 
 #. module: l10n_mx_partner_cif
 #: model_terms:ir.ui.view,arch_db:l10n_mx_partner_cif.view_partner_form
 msgid ""
-"<span attrs=\"{'invisible': [('cif_file', '=', False)]}\" colspan=\"2\">The "
-"CIF file uses OCR technology to automate the input.<br/>You need to "
-"validate if the information corresponds to CIF.<br/>It may happen that a "
-"field is not filled, in that case you need to define it manually.</span>"
+"<span invisible=\"cif_file == False\" colspan=\"2\">The CIF file uses OCR "
+"technology to automate the input.<br/>You need to validate if the "
+"information corresponds to CIF.<br/>It may happen that a field is not "
+"filled, in that case you need to define it manually.</span>"
 msgstr ""
-"<span attrs=\"{'invisible': [('cif_file', '=', False)]}\" colspan=\"2\">El "
-"archivo CIF utiliza tecnología OCR para automatizar la captura.<br/> Es "
-"necesario validar si la información concuerda con el CIF.<br/> Puede "
-"suceder que un campo no se llene, en ese caso deberá definirlo manualmente."
-"</span>"
+"<span invisible=\"cif_file == False\" colspan=\"2\">El archivo CIF "
+"utiliza tecnología OCR para automatizar la entrada.<br/> Es necesario "
+"validar si la información corresponde al CIF.<br/> Puede suceder que "
+"algún campo no esté rellenado, en ese caso es necesario definirlo "
+"manualmente.</span>"
 
 #. module: l10n_mx_partner_cif
 #: model:ir.model.fields,field_description:l10n_mx_partner_cif.field_res_partner__cif_file
@@ -41,3 +41,17 @@ msgstr "Adjuntar archivo CIF"
 #: model:ir.model,name:l10n_mx_partner_cif.model_res_partner
 msgid "Contact"
 msgstr "Contacto"
+
+#. module: l10n_mx_partner_cif
+#. odoo-python
+#: code:addons/l10n_mx_partner_cif/models/res_partner.py:0
+#, python-format
+msgid "Error"
+msgstr ""
+
+#. module: l10n_mx_partner_cif
+#. odoo-python
+#: code:addons/l10n_mx_partner_cif/models/res_partner.py:0
+#, python-format
+msgid "The file is not a valid PDF"
+msgstr "El archivo no es un PDF válido"
