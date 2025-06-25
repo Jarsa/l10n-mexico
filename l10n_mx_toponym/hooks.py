@@ -15,7 +15,7 @@ def post_init_hook(cr, registry):
     res_city_vals_list = []
     if not env["res.city"].search_count([("country_id", "=", mx_country.id)]):
         csv_path = join(dirname(realpath(__file__)), "static/data", "res.city.csv")
-        with open(csv_path, "r") as csv_file:
+        with open(csv_path) as csv_file:
             for row in csv.DictReader(
                 csv_file,
                 delimiter="|",
@@ -60,7 +60,7 @@ def post_init_hook(cr, registry):
         csv_path = join(
             dirname(realpath(__file__)), "static/data", "l10n_mx_edi.res.locality.csv"
         )
-        with open(csv_path, "r") as csv_file:
+        with open(csv_path) as csv_file:
             for row in csv.DictReader(
                 csv_file, delimiter="|", fieldnames=["code", "name", "state_xml_id"]
             ):
@@ -102,7 +102,7 @@ def post_init_hook(cr, registry):
     city_vals_list = []
     if not env["res.city.zip"].search_count([("country_id", "=", mx_country.id)]):
         csv_path = join(dirname(realpath(__file__)), "static/data", "res.city.zip.csv")
-        with open(csv_path, "r") as csv_file:
+        with open(csv_path) as csv_file:
             for row in csv.DictReader(
                 csv_file,
                 delimiter="|",
