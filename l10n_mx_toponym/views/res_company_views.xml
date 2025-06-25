@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr=".//field[@name='zip_id']" position="after">
                 <field name="country_code" invisible="1" />
-                <div attrs="{'invisible': [('country_code', '!=', 'MX')]}">
+                <div invisible="country_code != 'MX'">
                     <div class="o_row">
                         <field name="l10n_mx_edi_colony" placeholder="Colony..." />
                         <field
