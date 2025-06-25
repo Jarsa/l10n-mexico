@@ -1,4 +1,7 @@
 # generated from manifests external_dependencies
 facturama
+opencv-python
+pdf2image
 pdfminer.six==20220319
+pytesseract
 requests-mock

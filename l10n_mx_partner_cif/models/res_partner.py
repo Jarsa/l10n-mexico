@@ -49,7 +49,9 @@ class ResPartner(models.Model):
             and vals.get("last_name")
             and vals.get("second_last_name")
         ):
-            vals["name"] = "%(first_name)s %(last_name)s %(second_last_name)s" % vals
+            vals[
+                "name"
+            ] = f"{vals['first_name']} {vals['last_name']} {vals['second_last_name']}"
             vals.pop("first_name")
             vals.pop("last_name")
             vals.pop("second_last_name")
