@@ -9,7 +9,7 @@
             <xpath expr="//field[@name='category_id']" position="after">
                 <field name="cif_file" />
                 <span
-                    attrs="{'invisible': [('cif_file', '=', False)]}"
+                    invisible="cif_file == False"
                     colspan="2"
                 >The CIF file uses OCR technology to automate the input.<br
                     />You need to validate if the information corresponds to CIF.<br

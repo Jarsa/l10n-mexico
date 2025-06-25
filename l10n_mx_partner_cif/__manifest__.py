@@ -3,8 +3,8 @@
 
 {
     "name": "Mexico Partner CIF Import",
-    "version": "15.0.1.0.0",
-    "author": ("Jarsa," "Odoo Community Association (OCA)"),
+    "version": "17.0.1.0.0",
+    "author": ("Jarsa,Odoo Community Association (OCA)"),
     "category": "Accounting/Localizations",
     "website": "https://github.com/OCA/l10n-mexico",
     "depends": ["l10n_mx_toponym", "l10n_mx_partner"],

@@ -4,18 +4,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-06 15:45+0000\n"
-"PO-Revision-Date: 2022-06-06 10:47-0500\n"
+"POT-Creation-Date: 2025-06-25 16:31+0000\n"
+"PO-Revision-Date: 2025-06-25 10:33-0600\n"
 "Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
 "Language-Team: \n"
 "Language: es_MX\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__622
@@ -51,17 +51,24 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
 #: model:ir.model.fields,field_description:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
 msgid "Fiscal Regime"
-msgstr "Régimen Físcal"
+msgstr "Régimen fiscal"
+
+#. module: l10n_mx_partner
+#: model:ir.model.fields,help:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
+#: model:ir.model.fields,help:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
+msgid "Fiscal Regime is required for all partners (used in CFDI)"
+msgstr ""
+"Se requiere un régimen fiscal para todos los contactos (utilizado en CFDI)"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__601
 msgid "General de Ley Personas Morales"
-msgstr ""
+msgstr "General de Ley de Personas Morales"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__621
 msgid "Incorporación Fiscal"
-msgstr ""
+msgstr "Incorporación fiscal"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__611
@@ -74,34 +81,24 @@ msgid "Ingresos por intereses"
 msgstr ""
 
 #. module: l10n_mx_partner
-#: model:ir.model.fields,help:l10n_mx_partner.field_res_partner__l10n_mx_edi_fiscal_regime
-#: model:ir.model.fields,help:l10n_mx_partner.field_res_users__l10n_mx_edi_fiscal_regime
-msgid ""
-"It is used to fill Mexican XML CFDI required field Comprobante.Receptor."
-"RegimenFiscalReceptor."
-msgstr ""
-"Es usado para llenar el CFDI Mexicano, campo requerido para Comprobante."
-"Receptor.RegimenFiscalReceptor."
-
-#. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__623
 msgid "Opcional para Grupos de Sociedades"
-msgstr ""
+msgstr "Opcional para grupos de sociedades"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__612
 msgid "Personas Físicas con Actividades Empresariales y Profesionales"
-msgstr ""
+msgstr "Personas físicas con actividades empresariales y profesionales"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__603
 msgid "Personas Morales con Fines no Lucrativos"
-msgstr ""
+msgstr "Personas morales con fines no lucrativos"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__610
 msgid "Residentes en el Extranjero sin Establecimiento Permanente en México"
-msgstr ""
+msgstr "Residentes en el extranjero sin establecimiento permanente en México"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__626
@@ -111,7 +108,7 @@ msgstr ""
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__607
 msgid "Régimen de Enajenación o Adquisición de Bienes"
-msgstr ""
+msgstr "Régimen de enajenación o adquisición de bienes"
 
 #. module: l10n_mx_partner
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__625
@@ -140,3 +137,17 @@ msgstr ""
 #: model:ir.model.fields.selection,name:l10n_mx_partner.selection__res_partner__l10n_mx_edi_fiscal_regime__605
 msgid "Sueldos y Salarios e Ingresos Asimilados a Salarios"
 msgstr ""
+
+#. module: l10n_mx_partner
+#. odoo-python
+#: code:addons/l10n_mx_partner/models/res_partner.py:0
+#, python-format
+msgid "VAT is not valid"
+msgstr "El RFC no es válido"
+
+#. module: l10n_mx_partner
+#. odoo-python
+#: code:addons/l10n_mx_partner/models/res_partner.py:0
+#, python-format
+msgid "Warning"
+msgstr "Advertencia"
