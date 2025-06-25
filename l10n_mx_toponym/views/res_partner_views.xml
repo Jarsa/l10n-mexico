@@ -13,38 +13,35 @@
                     <field
                         name="street_name"
                         placeholder="Street Name..."
-                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                        readonly="type == 'contact' and parent_id != False"
                     />
                     <div class="o_row">
                         <label for="street_number" class="oe_edit_only" />
                         <span> </span>
                         <field
                             name="street_number"
-                            attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                            readonly="type == 'contact' and parent_id != False"
                         />
                         <label for="street_number2" class="oe_edit_only" />
                         <field
                             name="street_number2"
-                            attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                            readonly="type == 'contact' and parent_id != False"
                         />
                     </div>
-                    <field
-                        name="street2"
-                        attrs="{'invisible': [('street2', '=', False)] }"
-                    />
+                    <field name="street2" invisible="street2 == False" />
                     <field
                         name="zip_id"
                         options="{'create_name_field': 'city', 'no_open': True, 'no_create': True}"
                         placeholder="Location completion"
                         class="oe_edit_only"
-                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                        readonly="type == 'contact' and parent_id != False"
                     />
                     <field
                         name="l10n_mx_edi_locality_id"
                         options="{'no_open': True, 'no_create': True}"
                         placeholder="Locality"
                         class="oe_edit_only"
-                        attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"
+                        readonly="type == 'contact' and parent_id != False"
                     />
                     <div>
                         <div class="o_row">
@@ -52,7 +49,7 @@
                             <field
                                 name="l10n_mx_edi_colony_code"
                                 placeholder="Colony Code..."
-                                attrs="{'invisible': [('type', '!=', 'invoice')]}"
+                                invisible="type != 'invoice'"
                             />
                         </div>
                     </div>
