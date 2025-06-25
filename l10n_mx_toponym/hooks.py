@@ -3,11 +3,8 @@
 import csv
 from os.path import dirname, join, realpath
 
-from odoo import SUPERUSER_ID, api
 
-
-def post_init_hook(cr, registry):
-    env = api.Environment(cr, SUPERUSER_ID, {})
+def post_init_hook(env):
     mx_country = env["res.country"].search([("code", "=", "MX")])
 
     # ==== Load res.city ====
@@ -36,19 +33,19 @@ def post_init_hook(cr, registry):
     cities = env["res.city"].create(res_city_vals_list)
 
     if cities:
-        cr.execute(
+        env.cr.execute(
             """
-           INSERT INTO ir_model_data (name, res_id, module, model, noupdate)
-               SELECT
+            INSERT INTO ir_model_data (name, res_id, module, model, noupdate)
+                SELECT
                     'res_city_mx_' || lower(res_country_state.code) ||
                         '_' || res_city.l10n_mx_edi_code,
                     res_city.id,
                     'l10n_mx_toponym',
                     'res.city',
                     TRUE
-               FROM res_city
-               JOIN res_country_state ON res_country_state.id = res_city.state_id
-               WHERE res_city.id IN %s
+                FROM res_city
+                JOIN res_country_state ON res_country_state.id = res_city.state_id
+                WHERE res_city.id IN %s
         """,
             [tuple(cities.ids)],
         )
@@ -79,20 +76,20 @@ def post_init_hook(cr, registry):
         localities = env["l10n_mx_edi.res.locality"].create(locality_vals_list)
 
         if localities:
-            cr.execute(
+            env.cr.execute(
                 """
-               INSERT INTO ir_model_data (name, res_id, module, model, noupdate)
-                   SELECT
+                INSERT INTO ir_model_data (name, res_id, module, model, noupdate)
+                    SELECT
                         'res_locality_mx_' || lower(res_country_state.code) || '_' ||
                             l10n_mx_edi_res_locality.code,
                         l10n_mx_edi_res_locality.id,
                         'l10n_mx_toponym',
                         'l10n_mx_edi.res.locality',
                         TRUE
-                   FROM l10n_mx_edi_res_locality
-                   JOIN res_country_state ON
+                    FROM l10n_mx_edi_res_locality
+                    JOIN res_country_state ON
                     res_country_state.id = l10n_mx_edi_res_locality.state_id
-                   WHERE l10n_mx_edi_res_locality.id IN %s
+                    WHERE l10n_mx_edi_res_locality.id IN %s
             """,
                 [tuple(localities.ids)],
             )
@@ -134,10 +131,10 @@ def post_init_hook(cr, registry):
         cities = env["res.city.zip"].create(city_vals_list)
 
         if cities:
-            cr.execute(
+            env.cr.execute(
                 """
-               INSERT INTO ir_model_data (name, res_id, module, model, noupdate)
-                   SELECT
+                INSERT INTO ir_model_data (name, res_id, module, model, noupdate)
+                    SELECT
                         'res_city_zip_mx_' || lower(res_country_state.code) || '_' ||
                             res_city.l10n_mx_edi_code || '_' ||
                             res_city_zip.l10n_mx_edi_colony_code || '_' ||
@@ -146,10 +143,10 @@ def post_init_hook(cr, registry):
                         'l10n_mx_toponym',
                         'res.city.zip',
                         TRUE
-                   FROM res_city_zip
-                   JOIN res_city ON res_city.id = res_city_zip.city_id
-                   JOIN res_country_state ON res_country_state.id = res_city.state_id
-                   WHERE res_city_zip.id IN %s
+                    FROM res_city_zip
+                    JOIN res_city ON res_city.id = res_city_zip.city_id
+                    JOIN res_country_state ON res_country_state.id = res_city.state_id
+                    WHERE res_city_zip.id IN %s
             """,
                 [tuple(cities.ids)],
             )
