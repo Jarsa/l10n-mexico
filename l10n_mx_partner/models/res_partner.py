@@ -29,7 +29,8 @@ class ResPartner(models.Model):
             ("616", "Sin obligaciones fiscales"),
             (
                 "620",
-                "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+                "Sociedades Cooperativas de Producción que optan por diferir sus "
+                "ingresos",
             ),
             ("621", "Incorporación Fiscal"),
             ("622", "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras"),
@@ -59,8 +60,8 @@ class ResPartner(models.Model):
         if not self.vat or self.country_id and self.country_id.code != "MX":
             return False
         self.vat = self._l10n_mx_format_vat(self.vat)
-        person_pattern = "^[A-ZÑ\x26]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]|[0-9]){2}([A]|[0-9]){1}?$"  # noqa: B950
-        company_pattern = "^[A-ZÑ\x26]{3}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]|[0-9]){2}([A]|[0-9]){1}?$"  # noqa: B950
+        person_pattern = "^[A-ZÑ\x26]{4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]|[0-9]){2}([A]|[0-9]){1}?$"  # noqa: E501
+        company_pattern = "^[A-ZÑ\x26]{3}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]|[0-9]){2}([A]|[0-9]){1}?$"  # noqa: E501
         if re.match(person_pattern, self.vat):
             self.company_type = "person"
         elif re.match(company_pattern, self.vat):
