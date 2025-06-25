@@ -3,7 +3,7 @@
 
 {
     "name": "Partner customizations for Mexico",
-    "version": "15.0.1.0.0",
+    "version": "17.0.1.0.0",
     "author": "Jarsa,Odoo Community Association (OCA)",
     "category": "Accounting/Localizations",
     "website": "https://github.com/OCA/l10n-mexico",
