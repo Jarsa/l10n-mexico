@@ -44,19 +44,19 @@ Usage
 3. The following fields will be filled automatically if are found in CIF
    file:
 
--  Name
--  RFC
--  Street
--  Number
--  Internal Number
--  Colony
--  Postal Code
--  City
--  State
--  Country
--  Phone
--  Mobile
--  Email
+- Name
+- RFC
+- Street
+- Number
+- Internal Number
+- Colony
+- Postal Code
+- City
+- State
+- Country
+- Phone
+- Mobile
+- Email
 
 Bug Tracker
 ===========
@@ -79,7 +79,7 @@ Authors
 Contributors
 ------------
 
--  Alan Ramos <alan.ramos@jarsa.com>
+- Alan Ramos <alan.ramos@jarsa.com>
 
 Maintainers
 -----------
