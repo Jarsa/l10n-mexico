@@ -6,6 +6,14 @@ from odoo import api, fields, models
 class ResCityZip(models.Model):
     _inherit = "res.city.zip"
 
+    _rec_names_search = [
+        "name",
+        "l10n_mx_edi_colony",
+        "city_id",
+        "state_id",
+        "country_id",
+    ]
+
     l10n_mx_edi_colony = fields.Char(
         string="Colony",
     )
@@ -33,11 +41,15 @@ class ResCityZip(models.Model):
         "city_id.country_id",
         "l10n_mx_edi_colony",
     )
-    def _compute_new_display_name(self):
+    def _compute_display_name(self):
         for rec in self:
-            name = [rec.name, rec.city_id.name]
+            name = []
+            if rec.name:
+                name.append(rec.name)
             if rec.l10n_mx_edi_colony:
                 name.append(rec.l10n_mx_edi_colony)
+            if rec.city_id:
+                name.append(rec.city_id.name)
             if rec.city_id.state_id:
                 name.append(rec.city_id.state_id.name)
             if rec.city_id.country_id:

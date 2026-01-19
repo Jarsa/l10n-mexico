@@ -2387,7 +2387,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_partner__l10n_mx_edi_colony
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_users__l10n_mx_edi_colony
 msgid "Colony"
-msgstr ""
+msgstr "Colonia"
 
 #. module: l10n_mx_toponym
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_city_zip__l10n_mx_edi_colony_code
