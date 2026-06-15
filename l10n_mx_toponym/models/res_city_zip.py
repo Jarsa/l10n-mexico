@@ -17,14 +17,10 @@ class ResCityZip(models.Model):
         string="Locality",
     )
 
-    _sql_constraints = [
-        (
-            "name_city_uniq",
-            "UNIQUE(name, city_id, l10n_mx_edi_colony_code)",
-            "You already have a zip with that code in the same city. "
-            "The zip code must be unique within it's city",
-        )
-    ]
+    _name_city_uniq = models.Constraint(
+        'UNIQUE(name, city_id, l10n_mx_edi_colony_code)',
+        "You already have a zip with that code in the same city. The zip code must be unique within it's city",
+    )
 
     @api.depends(
         "name",
