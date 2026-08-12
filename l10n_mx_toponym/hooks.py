@@ -21,7 +21,7 @@ def _resolve_ref(env, xml_id):
     if not xml_id:
         return None
     for module in _REF_MODULES:
-        rec = env.ref("%s.%s" % (module, xml_id), raise_if_not_found=False)
+        rec = env.ref(f"{module}.{xml_id}", raise_if_not_found=False)
         if rec:
             return rec
     return None
@@ -111,7 +111,7 @@ def post_init_hook(env):
                 fieldnames=["l10n_mx_edi_code", "name", "state_xml_id"],
             ):
                 state = env.ref(
-                    "base.%s" % row["state_xml_id"], raise_if_not_found=False
+                    "base.{}".format(row["state_xml_id"]), raise_if_not_found=False
                 )
                 res_city_vals_list.append(
                     {
@@ -154,7 +154,7 @@ def post_init_hook(env):
                 csv_file, delimiter="|", fieldnames=["code", "name", "state_xml_id"]
             ):
                 state = env.ref(
-                    "base.%s" % row["state_xml_id"], raise_if_not_found=False
+                    "base.{}".format(row["state_xml_id"]), raise_if_not_found=False
                 )
                 locality_vals_list.append(
                     {
