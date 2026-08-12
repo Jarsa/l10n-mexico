@@ -17,7 +17,7 @@
                     />
                     <div class="o_row">
                         <label for="street_number" class="oe_edit_only" />
-                        <span> </span>
+                        <span />
                         <field
                             name="street_number"
                             readonly="type == 'contact' and parent_id != False"

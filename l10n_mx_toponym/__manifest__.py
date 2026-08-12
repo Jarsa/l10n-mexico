@@ -4,7 +4,7 @@
 {
     "name": "Toponyms for Mexico",
     "version": "19.0.1.1.0",
-    "depends": ["base_address_extended", "base_location"],
+    "depends": ["base_location"],
     "author": ("Jarsa,Odoo Community Association (OCA)"),
     "license": "AGPL-3",
     "summary": """Add toponyms to Mexico""",
