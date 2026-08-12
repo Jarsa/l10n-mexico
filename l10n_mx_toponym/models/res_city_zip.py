@@ -18,8 +18,9 @@ class ResCityZip(models.Model):
     )
 
     _name_city_uniq = models.Constraint(
-        'UNIQUE(name, city_id, l10n_mx_edi_colony_code)',
-        "You already have a zip with that code in the same city. The zip code must be unique within it's city",
+        "UNIQUE(name, city_id, l10n_mx_edi_colony_code)",
+        "You already have a zip with that code in the same city. "
+        "The zip code must be unique within its city",
     )
 
     @api.depends(
