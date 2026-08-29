@@ -17,6 +17,26 @@ _CITY_ZIP_FIELDS = [
 ]
 
 
+def _native_catalog_available(env):
+    """Whether l10n_mx_edi_extended provides the res.city / locality catalogs.
+
+    That module ships the very same catalogs, so loading ours on top of them
+    breaks res_city_name_state_country_uniq. Checking whether the tables are
+    already populated is not enough: when this module happens to be installed
+    first the tables are still empty, and the clash only shows up later, when
+    the native module loads its own CSV. Looking at the module state instead
+    covers both orders of installation.
+    """
+    return bool(
+        env["ir.module.module"].search_count(
+            [
+                ("name", "=", "l10n_mx_edi_extended"),
+                ("state", "in", ("installed", "to install", "to upgrade")),
+            ]
+        )
+    )
+
+
 def _resolve_ref(env, xml_id):
     if not xml_id:
         return None
@@ -101,8 +121,12 @@ def post_init_hook(env):
 
     # ==== Load res.city ====
 
+    native_catalog = _native_catalog_available(env)
+
     res_city_vals_list = []
-    if not env["res.city"].search_count([("country_id", "=", mx_country.id)]):
+    if not native_catalog and not env["res.city"].search_count(
+        [("country_id", "=", mx_country.id)]
+    ):
         csv_path = join(dirname(realpath(__file__)), "static/data", "res.city.csv")
         with open(csv_path) as csv_file:
             for row in csv.DictReader(
@@ -145,7 +169,7 @@ def post_init_hook(env):
     # ==== Load l10n_mx_edi.res.locality ====
 
     locality_vals_list = []
-    if not env["l10n_mx_edi.res.locality"].search_count([]):
+    if not native_catalog and not env["l10n_mx_edi.res.locality"].search_count([]):
         csv_path = join(
             dirname(realpath(__file__)), "static/data", "l10n_mx_edi.res.locality.csv"
         )
