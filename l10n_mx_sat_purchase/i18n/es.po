@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 00:23+0000\n"
+"POT-Creation-Date: 2026-10-28 21:36+0000\n"
 "PO-Revision-Date: 2026-10-08 00:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,6 +15,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__allow_unmapped
+msgid "Allow concepts without order"
+msgstr "Permitir conceptos sin orden"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__mapped_amount_untaxed
+msgid "Amount to Bill"
+msgstr "Importe a facturar"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__available_purchase_line_ids
+msgid "Available Purchase Line"
+msgstr "Línea de compra disponible"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__l10n_mx_sat_available_document_ids
@@ -34,15 +49,84 @@ msgid "Bill from SAT CFDI"
 msgstr "Factura desde CFDI del SAT"
 
 #. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__allow_unmapped
+msgid ""
+"Bill the concepts that have no purchase order line as free lines with the "
+"product selected on each one."
+msgstr ""
+"Factura los conceptos que no tienen línea de orden de compra como líneas "
+"libres con el producto seleccionado en cada uno."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__amount
+msgid "CFDI Amount"
+msgstr "Importe CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__concept_ids
+msgid "CFDI Concepts"
+msgstr "Conceptos del CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__discount_amount
+msgid "CFDI Discount"
+msgstr "Descuento CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__quantity
+msgid "CFDI Quantity"
+msgstr "Cantidad CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__cfdi_amount_untaxed
+msgid "CFDI Subtotal"
+msgstr "Subtotal del CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__tax_amount
+msgid "CFDI Taxes"
+msgstr "Impuestos CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__price_unit
+msgid "CFDI Unit Price"
+msgstr "Valor unitario CFDI"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__concept_document_id
+msgid "CFDI the concepts were built from."
+msgstr "CFDI del que se construyeron los conceptos."
+
+#. module: l10n_mx_sat_purchase
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__commercial_partner_id
+msgid "Commercial Partner"
+msgstr "Entidad comercial"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__company_id
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__company_id
 msgid "Company"
 msgstr "Compañía"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__concept_document_id
+msgid "Concept Document"
+msgstr "Documento de los conceptos"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard_concept
+msgid "Concept of a SAT CFDI mapped to a purchase order line"
+msgstr "Concepto de un CFDI del SAT vinculado a una línea de orden de compra"
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Concepts"
+msgstr "Conceptos"
 
 #. module: l10n_mx_sat_purchase
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
@@ -52,16 +136,19 @@ msgstr "Crear factura"
 #. module: l10n_mx_sat_purchase
 #: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard
 msgid "Create the vendor bill of purchase orders from a SAT CFDI"
-msgstr "Crear la factura de proveedor de órdenes de compra desde un CFDI del SAT"
+msgstr ""
+"Crear la factura de proveedor de órdenes de compra desde un CFDI del SAT"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__create_uid
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__create_date
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__create_date
 msgid "Created on"
 msgstr "Creado el"
@@ -74,13 +161,26 @@ msgid "Currency"
 msgstr "Moneda"
 
 #. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__display_name
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__display_name
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__display_name
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__display_name
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order_line__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document.py:0
+msgid "Exempt"
+msgstr "Exento"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__folio_number
@@ -91,8 +191,10 @@ msgstr "Folio"
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__id
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document_selector_mixin__id
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__id
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__id
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_purchase_order_line__id
 msgid "ID"
 msgstr "ID"
 
@@ -108,15 +210,23 @@ msgstr "Nombre del emisor"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__write_uid
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__write_date
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__available_purchase_line_ids
+msgid "Lines of the selected orders that still have a quantity to bill."
+msgstr ""
+"Líneas de las órdenes seleccionadas que aún tienen cantidad por facturar."
 
 #. module: l10n_mx_sat_purchase
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_document_view_search
@@ -130,6 +240,11 @@ msgid "Only confirmed purchase orders can be billed."
 msgstr "Solo se pueden facturar órdenes de compra confirmadas."
 
 #. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_uom_id
+msgid "Order Unit"
+msgstr "Unidad de la orden"
+
+#. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__amount_total
 msgid "Orders Total"
 msgstr "Total de las órdenes"
@@ -141,14 +256,56 @@ msgid "Partner"
 msgstr "Contacto"
 
 #. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_qty_pending
+msgid "Pending Quantity"
+msgstr "Cantidad pendiente"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__product_id
+msgid ""
+"Product of the purchase order line, or the product to bill when the concept "
+"has no line."
+msgstr ""
+"Producto de la línea de la orden de compra, o el producto a facturar cuando "
+"el concepto no tiene línea."
+
+#. module: l10n_mx_sat_purchase
 #: model:ir.model,name:l10n_mx_sat_purchase.model_purchase_order
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_order_id
 msgid "Purchase Order"
 msgstr "Orden de compra"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model,name:l10n_mx_sat_purchase.model_purchase_order_line
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__purchase_line_id
+msgid "Purchase Order Line"
+msgstr "Línea de orden de compra"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__purchase_order_ids
 msgid "Purchase Orders"
 msgstr "Órdenes de compra"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__qty_to_invoice
+msgid "Quantity of the CFDI in the unit of the purchase order line."
+msgstr "Cantidad del CFDI en la unidad de la línea de la orden de compra."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__qty_to_invoice
+msgid "Quantity to Bill"
+msgstr "Cantidad a facturar"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document.py:0
+msgid "Ret."
+msgstr "Ret."
 
 #. module: l10n_mx_sat_purchase
 #. odoo-python
@@ -162,7 +319,8 @@ msgstr "CFDI del SAT"
 #. module: l10n_mx_sat_purchase
 #: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_purchase_invoice_wizard_line
 msgid "SAT CFDI proposed for the vendor bill of a purchase order"
-msgstr "CFDI del SAT propuesto para la factura de proveedor de una orden de compra"
+msgstr ""
+"CFDI del SAT propuesto para la factura de proveedor de una orden de compra"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_document_selector_mixin
@@ -171,6 +329,7 @@ msgstr "Selector de CFDI del SAT"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__line_ids
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
 msgid "SAT CFDIs"
 msgstr "CFDI del SAT"
 
@@ -178,6 +337,16 @@ msgstr "CFDI del SAT"
 #: model:ir.model,name:l10n_mx_sat_purchase.model_l10n_mx_sat_document
 msgid "SAT Document"
 msgstr "Documento del SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__product_service_code
+msgid "SAT Product Code"
+msgstr "Clave de producto SAT"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__unit_code
+msgid "SAT Unit"
+msgstr "Unidad SAT"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__sat_status
@@ -198,8 +367,23 @@ msgstr "Seleccione un CFDI descargado del SAT."
 #. module: l10n_mx_sat_purchase
 #. odoo-python
 #: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"Select a product for the concepts without purchase order line:\n"
+"%(concepts)s"
+msgstr ""
+"Seleccione un producto para los conceptos sin línea de orden de compra:\n"
+"%(concepts)s"
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
 msgid "Select only one CFDI: each bill comes from a single CFDI."
 msgstr "Seleccione solo un CFDI: cada factura proviene de un único CFDI."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__sequence
+msgid "Sequence"
+msgstr "Secuencia"
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__series
@@ -207,12 +391,50 @@ msgid "Series"
 msgstr "Serie"
 
 #. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__cfdi_amount_untaxed
+msgid "Subtotal of the CFDI after discounts."
+msgstr "Subtotal del CFDI después de descuentos."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__tax_summary
+msgid "Taxes"
+msgstr "Impuestos"
+
+#. module: l10n_mx_sat_purchase
 #. odoo-python
 #: code:addons/l10n_mx_sat_purchase/models/l10n_mx_sat_document_selector_mixin.py:0
 msgid ""
 "The CFDI %(uuid)s can no longer be linked: it was cancelled, linked to "
 "another vendor bill or does not belong to the vendor."
-msgstr "El CFDI %(uuid)s ya no se puede vincular: fue cancelado, está ligado a otra factura de proveedor o no pertenece al proveedor."
+msgstr ""
+"El CFDI %(uuid)s ya no se puede vincular: fue cancelado, está ligado a otra "
+"factura de proveedor o no pertenece al proveedor."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The CFDI %s has no concepts to bill."
+msgstr "El CFDI %s no tiene conceptos que facturar."
+
+#. module: l10n_mx_sat_purchase
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+msgid ""
+"The amount to bill differs from the CFDI subtotal. Review the quantities to "
+"bill before creating the bill."
+msgstr ""
+"El importe a facturar difiere del subtotal del CFDI. Revise las cantidades a"
+" facturar antes de crear la factura."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The purchase order line '%s' has nothing left to bill."
+msgstr "La línea de orden de compra '%s' ya no tiene nada por facturar."
 
 #. module: l10n_mx_sat_purchase
 #. odoo-python
@@ -227,16 +449,49 @@ msgid "The purchase orders must use the same currency."
 msgstr "Las órdenes de compra deben usar la misma moneda."
 
 #. module: l10n_mx_sat_purchase
-#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
 msgid ""
-"The total of the selected CFDI differs from the orders total. Review the "
-"bill before posting it."
-msgstr "El total del CFDI seleccionado es diferente del total de las órdenes. Revise la factura antes de validarla."
+"The quantity to bill of '%(line)s' (%(quantity)s %(uom)s) exceeds its "
+"pending quantity (%(pending)s %(uom)s)."
+msgstr ""
+"La cantidad a facturar de '%(line)s' (%(quantity)s %(uom)s) excede su "
+"cantidad pendiente (%(pending)s %(uom)s)."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid "The quantity to bill of the concept '%s' must be positive."
+msgstr "La cantidad a facturar del concepto '%s' debe ser positiva."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"The total of the bill (%(bill)s) differs from the total of the CFDI %(uuid)s"
+" (%(cfdi)s). Review the quantities and taxes before posting it."
+msgstr ""
+"El total de la factura (%(bill)s) difiere del total del CFDI %(uuid)s "
+"(%(cfdi)s). Revise las cantidades y los impuestos antes de confirmarla."
 
 #. module: l10n_mx_sat_purchase
 #: model_terms:ir.ui.view,arch_db:l10n_mx_sat_purchase.l10n_mx_sat_purchase_invoice_wizard_view_form
 msgid "There is no CFDI of this vendor pending to bill in the SAT downloads."
-msgstr "No hay ningún CFDI de este proveedor pendiente de facturar en las descargas del SAT."
+msgstr ""
+"No hay ningún CFDI de este proveedor pendiente de facturar en las descargas "
+"del SAT."
+
+#. module: l10n_mx_sat_purchase
+#. odoo-python
+#: code:addons/l10n_mx_sat_purchase/wizards/l10n_mx_sat_purchase_invoice_wizard.py:0
+msgid ""
+"These CFDI concepts have no purchase order line:\n"
+"%(concepts)s\n"
+"Map them to a line or tick 'Allow concepts without order'."
+msgstr ""
+"Estos conceptos del CFDI no tienen línea de orden de compra:\n"
+"%(concepts)s\n"
+"Vincúlelos a una línea o marque 'Permitir conceptos sin orden'."
 
 #. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__total
@@ -255,11 +510,22 @@ msgid "UUID"
 msgstr "UUID"
 
 #. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,help:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard__mapped_amount_untaxed
+msgid "Untaxed amount of the concepts with the quantities to bill."
+msgstr "Importe sin impuestos de los conceptos con las cantidades a facturar."
+
+#. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__no_identificacion
+msgid "Vendor Code"
+msgstr "Código del proveedor"
+
+#. module: l10n_mx_sat_purchase
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_document__vendor_bill_id
 msgid "Vendor bill"
 msgstr "Factura de proveedor"
 
 #. module: l10n_mx_sat_purchase
+#: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_concept__wizard_id
 #: model:ir.model.fields,field_description:l10n_mx_sat_purchase.field_l10n_mx_sat_purchase_invoice_wizard_line__wizard_id
 msgid "Wizard"
 msgstr "Asistente"

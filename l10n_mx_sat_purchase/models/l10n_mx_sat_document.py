@@ -1,7 +1,22 @@
 # Copyright 2026 Jarsa
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import logging
+
+from lxml import etree
+
 from odoo import api, fields, models
+
+_logger = logging.getLogger(__name__)
+
+CFDI_TAX_CODE_TO_NAME = {"001": "ISR", "002": "IVA", "003": "IEPS"}
+
+
+def _to_float(value, default=0.0):
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
 
 
 class L10nMxSatDocument(models.Model):
@@ -66,3 +81,82 @@ class L10nMxSatDocument(models.Model):
             "mimetype": "application/xml",
             "res_model": "mail.compose.message",
         }
+
+    def _get_cfdi_tree(self):
+        """Root element of the CFDI XML stored in ``attachment_id``, or None."""
+        self.ensure_one()
+        raw = self.attachment_id.with_context(bin_size=False).raw
+        if not raw:
+            return None
+        try:
+            return etree.fromstring(raw)
+        except etree.XMLSyntaxError:
+            _logger.warning(
+                "The XML of the SAT document %s cannot be parsed", self.uuid
+            )
+            return None
+
+    def _get_cfdi_amounts(self):
+        """Header amounts of the CFDI: ``subtotal``, ``discount`` and ``total``."""
+        tree = self._get_cfdi_tree()
+        if tree is None:
+            return {"subtotal": 0.0, "discount": 0.0, "total": self.total}
+        return {
+            "subtotal": _to_float(tree.get("SubTotal")),
+            "discount": _to_float(tree.get("Descuento")),
+            "total": _to_float(tree.get("Total"), self.total),
+        }
+
+    def _get_cfdi_concepts(self):
+        """Concepts of the CFDI as a list of dicts, in the order of the XML.
+
+        Each dict has the attributes of ``cfdi:Concepto`` (``no_identificacion``,
+        ``description``, ``product_service_code``, ``quantity``, ``unit_code``,
+        ``price_unit``, ``amount``, ``discount_amount``) plus the taxes of the
+        concept: ``tax_amount`` (transferred minus withheld) and ``tax_summary``
+        (human readable rates).
+        """
+        tree = self._get_cfdi_tree()
+        if tree is None:
+            return []
+        concepts = []
+        for sequence, node in enumerate(
+            tree.findall("{*}Conceptos/{*}Concepto"), start=1
+        ):
+            tax_amount = 0.0
+            summary = []
+            for kind, path in (
+                ("transferred", "{*}Impuestos/{*}Traslados/{*}Traslado"),
+                ("withheld", "{*}Impuestos/{*}Retenciones/{*}Retencion"),
+            ):
+                for tax_node in node.findall(path):
+                    amount = _to_float(tax_node.get("Importe"))
+                    tax_amount += amount if kind == "transferred" else -amount
+                    summary.append(self._format_cfdi_tax(tax_node, kind == "withheld"))
+            concepts.append(
+                {
+                    "sequence": sequence,
+                    "no_identificacion": node.get("NoIdentificacion") or False,
+                    "description": node.get("Descripcion") or False,
+                    "product_service_code": node.get("ClaveProdServ") or False,
+                    "quantity": _to_float(node.get("Cantidad"), 1.0),
+                    "unit_code": node.get("ClaveUnidad") or False,
+                    "price_unit": _to_float(node.get("ValorUnitario")),
+                    "amount": _to_float(node.get("Importe")),
+                    "discount_amount": _to_float(node.get("Descuento")),
+                    "tax_amount": tax_amount,
+                    "tax_summary": ", ".join(summary),
+                }
+            )
+        return concepts
+
+    @api.model
+    def _format_cfdi_tax(self, tax_node, withheld=False):
+        name = CFDI_TAX_CODE_TO_NAME.get(
+            tax_node.get("Impuesto"), tax_node.get("Impuesto")
+        )
+        if tax_node.get("TipoFactor") == "Exento":
+            rate = self.env._("Exempt")
+        else:
+            rate = f"{_to_float(tax_node.get('TasaOCuota')) * 100:g}%"
+        return f"{self.env._('Ret.') + ' ' if withheld else ''}{name} {rate}"
