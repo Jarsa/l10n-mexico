@@ -3,7 +3,7 @@
 
 {
     "name": "Mexico - SAT CFDI on Purchase Orders",
-    "version": "19.0.1.0.0",
+    "version": "19.0.2.0.0",
     "category": "Accounting/Localizations",
     "summary": "Create the vendor bill of a purchase order from a CFDI "
     "downloaded from the SAT",
