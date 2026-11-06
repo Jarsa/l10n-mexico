@@ -43,10 +43,18 @@ following information:
 - City
 - State
 
+The zip catalog (*Contacts / Configuration / Localization / Zips*) lists
+the colony of each entry and the name of a zip shows it too
+(``01000, San Ángel, Álvaro Obregón, Ciudad de México, México``), so the
+right colony can be picked and searched in every zip field.
+
 It creates a partner View related to country in order to show the fields
 only if Mexico is the company country.
 
-Also import the catalogs from SAT.
+Cities and localities come from the SAT catalogs; the zip codes and
+colonies are downloaded from the national catalog of Correos de México
+and refreshed every month by a scheduled action, so the module does not
+ship them.
 
 **Table of contents**
 
@@ -65,6 +73,30 @@ Configuration
 7. Be sure that the Input View is
    'l10n_mx_toponym.res.partner.address.form'
 
+Zip catalog (Correos de México)
+-------------------------------
+
+The zip codes and colonies are not shipped with the module: they are
+downloaded from the *Catálogo Nacional de Códigos Postales* published by
+Correos de México (``cpdescarga.txt``, open data) when the module is
+installed and then every month by the scheduled action *Mexico: update
+the zip catalog from Correos de México*. The load is additive: only the
+(city, zip, colony) entries missing from the database are created, so
+the zips already used by contacts are never changed or removed.
+
+- To refresh on demand, open *Contacts / Configuration / Localization /
+  Zips* and press *Update from Correos de México* (administrators).
+- The system parameter ``l10n_mx_toponym.sepomex_url`` overrides the
+  download URL; ``l10n_mx_toponym.sepomex_last_update`` keeps the date
+  of the last load.
+- Without network access at install time the catalog stays empty and a
+  warning is logged; the scheduled action loads it as soon as the file
+  can be downloaded.
+- Cities and localities keep coming from the SAT catalogs (shipped with
+  the module or with ``l10n_mx_edi_extended``); a colony whose
+  municipality is not in those catalogs is skipped and counted in the
+  log.
+
 Usage
 =====
 
@@ -72,6 +104,10 @@ Usage
 2. Fill the field *Location completion*
 3. Information about country, state, city, colony, colony code, locality
    and zip will be filled automatically
+
+The zip fields search by zip code, colony, city, state or country, and
+show the colony in the name of each entry
+(``01000, San Ángel, Álvaro Obregón, Ciudad de México, México``).
 
 Bug Tracker
 ===========

@@ -3,7 +3,7 @@
 
 {
     "name": "Toponyms for Mexico",
-    "version": "19.0.1.1.1",
+    "version": "19.0.1.2.0",
     "depends": ["base_location"],
     "author": ("Jarsa,Odoo Community Association (OCA)"),
     "license": "AGPL-3",
@@ -12,6 +12,8 @@
     "post_init_hook": "post_init_hook",
     "data": [
         "security/ir.model.access.csv",
+        "data/ir_cron_data.xml",
+        "views/res_city_zip_views.xml",
         "views/res_company_views.xml",
         "views/res_partner_views.xml",
         "data/res_country_data.xml",

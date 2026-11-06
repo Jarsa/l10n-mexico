@@ -385,19 +385,29 @@ following information:</p>
 <li>City</li>
 <li>State</li>
 </ul>
+<p>The zip catalog (<em>Contacts / Configuration / Localization / Zips</em>) lists
+the colony of each entry and the name of a zip shows it too
+(<tt class="docutils literal">01000, San Ángel, Álvaro Obregón, Ciudad de México, México</tt>), so the
+right colony can be picked and searched in every zip field.</p>
 <p>It creates a partner View related to country in order to show the fields
 only if Mexico is the company country.</p>
-<p>Also import the catalogs from SAT.</p>
+<p>Cities and localities come from the SAT catalogs; the zip codes and
+colonies are downloaded from the national catalog of Correos de México
+and refreshed every month by a scheduled action, so the module does not
+ship them.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#configuration" id="toc-entry-1">Configuration</a></li>
-<li><a class="reference internal" href="#usage" id="toc-entry-2">Usage</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-3">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-4">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-5">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="toc-entry-6">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-7">Maintainers</a></li>
+<li><a class="reference internal" href="#configuration" id="toc-entry-1">Configuration</a><ul>
+<li><a class="reference internal" href="#zip-catalog-correos-de-mexico" id="toc-entry-2">Zip catalog (Correos de México)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage" id="toc-entry-3">Usage</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-4">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-5">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-6">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-7">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-8">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -414,18 +424,45 @@ only if Mexico is the company country.</p>
 <li>Be sure that the Input View is
 ‘l10n_mx_toponym.res.partner.address.form’</li>
 </ol>
+<div class="section" id="zip-catalog-correos-de-mexico">
+<h3><a class="toc-backref" href="#toc-entry-2">Zip catalog (Correos de México)</a></h3>
+<p>The zip codes and colonies are not shipped with the module: they are
+downloaded from the <em>Catálogo Nacional de Códigos Postales</em> published by
+Correos de México (<tt class="docutils literal">cpdescarga.txt</tt>, open data) when the module is
+installed and then every month by the scheduled action <em>Mexico: update
+the zip catalog from Correos de México</em>. The load is additive: only the
+(city, zip, colony) entries missing from the database are created, so
+the zips already used by contacts are never changed or removed.</p>
+<ul class="simple">
+<li>To refresh on demand, open <em>Contacts / Configuration / Localization /
+Zips</em> and press <em>Update from Correos de México</em> (administrators).</li>
+<li>The system parameter <tt class="docutils literal">l10n_mx_toponym.sepomex_url</tt> overrides the
+download URL; <tt class="docutils literal">l10n_mx_toponym.sepomex_last_update</tt> keeps the date
+of the last load.</li>
+<li>Without network access at install time the catalog stays empty and a
+warning is logged; the scheduled action loads it as soon as the file
+can be downloaded.</li>
+<li>Cities and localities keep coming from the SAT catalogs (shipped with
+the module or with <tt class="docutils literal">l10n_mx_edi_extended</tt>); a colony whose
+municipality is not in those catalogs is skipped and counted in the
+log.</li>
+</ul>
+</div>
 </div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#toc-entry-2">Usage</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Usage</a></h2>
 <ol class="arabic simple">
 <li>Access a partner record</li>
 <li>Fill the field <em>Location completion</em></li>
 <li>Information about country, state, city, colony, colony code, locality
 and zip will be filled automatically</li>
 </ol>
+<p>The zip fields search by zip code, colony, city, state or country, and
+show the colony in the name of each entry
+(<tt class="docutils literal">01000, San Ángel, Álvaro Obregón, Ciudad de México, México</tt>).</p>
 </div>
 <div class="section" id="bug-tracker">
-<h2><a class="toc-backref" href="#toc-entry-3">Bug Tracker</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-4">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/l10n-mexico/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -433,21 +470,21 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h2><a class="toc-backref" href="#toc-entry-4">Credits</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">Credits</a></h2>
 <div class="section" id="authors">
-<h3><a class="toc-backref" href="#toc-entry-5">Authors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">Authors</a></h3>
 <ul class="simple">
 <li>Jarsa</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h3><a class="toc-backref" href="#toc-entry-6">Contributors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-7">Contributors</a></h3>
 <ul class="simple">
 <li>Alan Ramos (Jarsa)</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h3><a class="toc-backref" href="#toc-entry-7">Maintainers</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">Maintainers</a></h3>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org">
 <img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />

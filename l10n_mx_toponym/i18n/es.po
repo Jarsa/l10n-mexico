@@ -2387,7 +2387,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_partner__l10n_mx_edi_colony
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_users__l10n_mx_edi_colony
 msgid "Colony"
-msgstr ""
+msgstr "Colonia"
 
 #. module: l10n_mx_toponym
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_city_zip__l10n_mx_edi_colony_code
@@ -5205,7 +5205,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_users__l10n_mx_edi_locality_id
 #: model_terms:ir.ui.view,arch_db:l10n_mx_toponym.mx_partner_address_form
 msgid "Locality"
-msgstr ""
+msgstr "Localidad"
 
 #. module: l10n_mx_toponym
 #: model_terms:ir.ui.view,arch_db:l10n_mx_toponym.mx_partner_address_form
@@ -13429,3 +13429,31 @@ msgstr ""
 #: model:l10n_mx_edi.res.locality,name:l10n_mx_toponym.res_locality_mx_slp_02
 msgid "Ébano"
 msgstr ""
+
+#. module: l10n_mx_toponym
+#: model:ir.cron,cron_name:l10n_mx_toponym.ir_cron_sepomex_refresh
+msgid "Mexico: update the zip catalog from Correos de México"
+msgstr "México: actualizar el catálogo de códigos postales de Correos de México"
+
+#. module: l10n_mx_toponym
+#: model_terms:ir.ui.view,arch_db:l10n_mx_toponym.city_zip_tree
+msgid "Update from Correos de México"
+msgstr "Actualizar desde Correos de México"
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
+msgid "The zip catalog could not be downloaded from Correos de México: %s"
+msgstr "No se pudo descargar el catálogo de códigos postales de Correos de México: %s"
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
+msgid "Zip catalog updated"
+msgstr "Catálogo de códigos postales actualizado"
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
+msgid "%(created)s new entries loaded from Correos de México; %(skipped)s skipped because their municipality is unknown."
+msgstr "%(created)s entradas nuevas cargadas de Correos de México; %(skipped)s omitidas porque su municipio no se conoce."
