@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_invoice_wizard_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.invoice.wizard.form</field>
+        <field name="model">l10n_mx_sat.invoice.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="company_id" invisible="1" />
+                    <field name="journal_type" invisible="1" />
+                    <field name="direction" />
+                    <field name="journal_id" />
+                    <field name="account_id" />
+                </group>
+                <field name="document_ids" readonly="1">
+                    <list>
+                        <field name="series" />
+                        <field name="folio_number" />
+                        <field name="issue_date" />
+                        <field name="issuer_name" />
+                        <field name="receiver_name" />
+                        <field name="voucher_type" />
+                        <field name="total" sum="Total" />
+                        <field name="currency_code" />
+                        <field name="sat_status" widget="badge" />
+                        <field name="uuid" optional="hide" />
+                    </list>
+                </field>
+                <footer>
+                    <button
+                        name="action_create_invoices"
+                        string="Create Invoices"
+                        type="object"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

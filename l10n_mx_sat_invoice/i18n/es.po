@@ -1,0 +1,293 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_sat_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 18:29+0000\n"
+"PO-Revision-Date: 2026-11-06 18:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/l10n_mx_sat_document.py:0
+msgid ""
+"%(uuid)s is a CFDI of type %(type)s: only invoices (I) and credit notes (E) "
+"can be imported."
+msgstr "%(uuid)s es un CFDI de tipo %(type)s: solo se pueden importar facturas (I) y notas de crédito (E)."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/l10n_mx_sat_document.py:0
+msgid "%(uuid)s is already linked to %(invoice)s."
+msgstr "%(uuid)s ya está ligado a %(invoice)s."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/l10n_mx_sat_document.py:0
+msgid "%(uuid)s is cancelled in the SAT."
+msgstr "%(uuid)s está cancelado en el SAT."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/l10n_mx_sat_document.py:0
+msgid "%(uuid)s is not a CFDI with XML."
+msgstr "%(uuid)s no es un CFDI con XML."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "%s (IEPS)"
+msgstr "%s (IEPS)"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__account_id
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,help:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__account_id
+msgid ""
+"Account of the lines whose product has no income/expense account and of the "
+"local taxes."
+msgstr "Cuenta de las líneas cuyo producto no tiene cuenta de ingresos/gastos y de los impuestos locales."
+
+#. module: l10n_mx_sat_invoice
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_invoice.l10n_mx_sat_invoice_wizard_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: l10n_mx_sat_invoice
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_invoice.l10n_mx_sat_document_view_form
+msgid "Create Invoice"
+msgstr "Crear factura"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.actions.server,name:l10n_mx_sat_invoice.l10n_mx_sat_document_action_create_invoice
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_invoice.l10n_mx_sat_invoice_wizard_view_form
+msgid "Create Invoices"
+msgstr "Crear facturas"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/l10n_mx_sat_document.py:0
+msgid "Create invoice"
+msgstr "Crear factura"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model,name:l10n_mx_sat_invoice.model_l10n_mx_sat_invoice_wizard
+msgid "Create invoices from SAT CFDIs"
+msgstr "Crear facturas desde CFDI del SAT"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_document__customer_invoice_id
+msgid "Customer invoice"
+msgstr "Factura de cliente"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__direction
+msgid "Direction"
+msgstr "Dirección"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_document__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__id
+msgid "ID"
+msgstr "UUID"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_document__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "Invoice created from the SAT CFDI %(uuid)s."
+msgstr "Factura creada desde el CFDI del SAT %(uuid)s."
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields.selection,name:l10n_mx_sat_invoice.selection__l10n_mx_sat_invoice_wizard__direction__issued
+msgid "Issued"
+msgstr "Emitidos"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model,name:l10n_mx_sat_invoice.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__journal_type
+msgid "Journal Type"
+msgstr "Tipo de diario"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid ""
+"No %(use)s tax found for %(type)s %(factor)s %(rate)s. Configure it with the"
+" SAT tax type, factor type and rate of the CFDI."
+msgstr "No se encontró un impuesto de %(use)s para %(type)s %(factor)s %(rate)s. Configúralo con el tipo de impuesto SAT, el tipo de factor y la tasa del CFDI."
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields.selection,name:l10n_mx_sat_invoice.selection__l10n_mx_sat_invoice_wizard__journal_type__purchase
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields.selection,name:l10n_mx_sat_invoice.selection__l10n_mx_sat_invoice_wizard__direction__received
+msgid "Received"
+msgstr "Recibidos"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "Related CFDIs (%(relation)s): %(uuids)s."
+msgstr "CFDI relacionados (%(relation)s): %(uuids)s."
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_account_bank_statement_line__l10n_mx_sat_document_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_account_move__l10n_mx_sat_document_id
+msgid "SAT CFDI"
+msgstr "CFDI del SAT"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_invoice_wizard__document_ids
+msgid "SAT CFDIs"
+msgstr "CFDI del SAT"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model,name:l10n_mx_sat_invoice.model_l10n_mx_sat_document
+msgid "SAT Document"
+msgstr "Documento SAT"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields.selection,name:l10n_mx_sat_invoice.selection__l10n_mx_sat_invoice_wizard__journal_type__sale
+msgid "Sale"
+msgstr "Venta"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/wizards/l10n_mx_sat_invoice_wizard.py:0
+msgid ""
+"Select only issued CFDIs (customer invoices) or only received CFDIs (vendor "
+"bills)."
+msgstr "Selecciona solo CFDI emitidos (facturas de cliente) o solo CFDI recibidos (facturas de proveedor)."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "Station %(station)s - Operation %(operation)s"
+msgstr "Estación %(station)s - Operación %(operation)s"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/l10n_mx_sat_document.py:0
+msgid "The CFDI %(uuid)s has no XML."
+msgstr "El CFDI %(uuid)s no tiene XML."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid ""
+"The CFDI %(uuid)s is of type %(type)s: only invoices (I) and credit notes "
+"(E) can be imported."
+msgstr "El CFDI %(uuid)s es de tipo %(type)s: solo se pueden importar facturas (I) y notas de crédito (E)."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/wizards/l10n_mx_sat_invoice_wizard.py:0
+msgid "The CFDIs must belong to the same company."
+msgstr "Los CFDI deben pertenecer a la misma compañía."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "The currency %(currency)s of the CFDI %(uuid)s is not active."
+msgstr "La moneda %(currency)s del CFDI %(uuid)s no está activa."
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid ""
+"The total of the invoice (%(invoice)s) differs from the total of the CFDI "
+"(%(cfdi)s): review the lines and the taxes."
+msgstr "El total de la factura (%(invoice)s) difiere del total del CFDI (%(cfdi)s): revisa las líneas y los impuestos."
+
+#. module: l10n_mx_sat_invoice
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_invoice.l10n_mx_sat_invoice_wizard_view_form
+msgid "Total"
+msgstr "Total"
+
+#. module: l10n_mx_sat_invoice
+#: model:ir.model.fields,field_description:l10n_mx_sat_invoice.field_l10n_mx_sat_document__vendor_bill_id
+msgid "Vendor bill"
+msgstr "Factura de proveedor"
+
+#. module: l10n_mx_sat_invoice
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_invoice.l10n_mx_sat_document_view_search
+msgid "With invoice"
+msgstr "Con factura"
+
+#. module: l10n_mx_sat_invoice
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_invoice.l10n_mx_sat_document_view_search
+msgid "Without invoice"
+msgstr "Sin factura"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "purchase"
+msgstr "compra"
+
+#. module: l10n_mx_sat_invoice
+#. odoo-python
+#: code:addons/l10n_mx_sat_invoice/models/account_move.py:0
+msgid "sale"
+msgstr "venta"

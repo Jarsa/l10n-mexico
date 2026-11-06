@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_document_view_list" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.list.invoice</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_list" />
+        <field name="arch" type="xml">
+            <field name="has_xml" position="after">
+                <field name="invoice_id" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.form.invoice</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_form" />
+        <field name="arch" type="xml">
+            <button name="action_download_xml" position="before">
+                <button
+                    name="action_create_invoice"
+                    type="object"
+                    string="Create Invoice"
+                    class="btn-primary"
+                    groups="account.group_account_invoice"
+                    invisible="document_kind != 'cfdi' or not has_xml or voucher_type not in ('I', 'E') or sat_status == 'cancelled' or invoice_id"
+                />
+            </button>
+            <field name="has_xml" position="after">
+                <field name="invoice_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_view_search" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.search.invoice</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_search" />
+        <field name="arch" type="xml">
+            <filter name="valid" position="before">
+                <filter
+                    string="Without invoice"
+                    name="without_invoice"
+                    domain="[('document_kind', '=', 'cfdi'), ('voucher_type', 'in', ('I', 'E')), ('vendor_bill_id', '=', False), ('customer_invoice_id', '=', False)]"
+                />
+                <filter
+                    string="With invoice"
+                    name="with_invoice"
+                    domain="['|', ('vendor_bill_id', '!=', False), ('customer_invoice_id', '!=', False)]"
+                />
+                <separator />
+            </filter>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_action_create_invoice" model="ir.actions.server">
+        <field name="name">Create Invoices</field>
+        <field name="model_id" ref="l10n_mx_sat.model_l10n_mx_sat_document" />
+        <field name="binding_model_id" ref="l10n_mx_sat.model_l10n_mx_sat_document" />
+        <field name="binding_view_types">list</field>
+        <field name="group_ids" eval="[(4, ref('account.group_account_invoice'))]" />
+        <field name="state">code</field>
+        <field name="code">action = records.action_create_invoice()</field>
+    </record>
+</odoo>
