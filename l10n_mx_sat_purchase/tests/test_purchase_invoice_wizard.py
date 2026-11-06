@@ -9,6 +9,7 @@ from odoo import Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
+from odoo.tools import mute_logger
 
 # Fictitious RFCs: the SAT test RFC for the company and a made-up one for the vendor.
 COMPANY_RFC = "EKU9003173C9"
@@ -349,6 +350,7 @@ class TestPurchaseInvoiceWizard(TransactionCase):
         self.assertEqual(concept.tax_summary, "IVA 16%")
         self.assertEqual(wizard.cfdi_amount_untaxed, 120.0)
 
+    @mute_logger("odoo.addons.l10n_mx_sat_purchase.models.l10n_mx_sat_document")
     def test_concepts_of_document_without_xml(self):
         self.document.attachment_id.write({"raw": b"<broken"})
         self.assertIsNone(self.document._get_cfdi_tree())
