@@ -7,6 +7,7 @@ import requests
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase, tagged
+from odoo.tools import mute_logger
 
 SAMPLE = join(dirname(__file__), "sepomex_sample.txt")
 
@@ -100,6 +101,7 @@ class TestToponym(TransactionCase):
         created, skipped = self.Zip._sepomex_load(rows[:1])
         self.assertEqual((created, skipped), (0, 1))
 
+    @mute_logger("odoo.addons.l10n_mx_toponym.models.res_city_zip")
     def test_sepomex_download_failure(self):
         """The cron never breaks on a download error; the button reports it."""
         with patch.object(
