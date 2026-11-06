@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_document_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.form.payment</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_form" />
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button
+                    name="action_apply_payments"
+                    type="object"
+                    string="Apply Payment"
+                    class="btn-primary"
+                    invisible="voucher_type != 'P' or sat_payment_state in (False, 'done')"
+                    groups="account.group_account_invoice"
+                />
+            </header>
+            <xpath expr="//sheet/group" position="after">
+                <notebook invisible="voucher_type != 'P'">
+                    <page string="Payment Complement" name="l10n_mx_sat_payment">
+                        <field name="sat_payment_state" />
+                        <field name="sat_payment_ids" readonly="1" />
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_view_list" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.list.payment</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_list" />
+        <field name="arch" type="xml">
+            <field name="has_xml" position="after">
+                <field name="sat_payment_state" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_view_search" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.document.search.payment</field>
+        <field name="model">l10n_mx_sat.document</field>
+        <field name="inherit_id" ref="l10n_mx_sat.l10n_mx_sat_document_view_search" />
+        <field name="arch" type="xml">
+            <filter name="received" position="after">
+                <separator />
+                <filter
+                    string="Payment complements to apply"
+                    name="payment_pending"
+                    domain="[('sat_payment_state', 'in', ('pending', 'partial'))]"
+                />
+                <filter
+                    string="Payment complements applied"
+                    name="payment_done"
+                    domain="[('sat_payment_state', '=', 'done')]"
+                />
+            </filter>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_document_action_apply_payments" model="ir.actions.server">
+        <field name="name">Apply Payment Complements</field>
+        <field name="model_id" ref="l10n_mx_sat.model_l10n_mx_sat_document" />
+        <field name="binding_model_id" ref="l10n_mx_sat.model_l10n_mx_sat_document" />
+        <field name="binding_view_types">list</field>
+        <field name="group_ids" eval="[(4, ref('account.group_account_invoice'))]" />
+        <field name="state">code</field>
+        <field name="code">action = records.action_apply_payments()</field>
+    </record>
+</odoo>

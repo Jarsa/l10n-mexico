@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="name">res.company.form.l10n_mx_sat_payment</field>
+        <field name="model">res.company</field>
+        <field
+            name="inherit_id"
+            ref="l10n_mx_sat.view_company_form_inherit_l10n_mx_sat"
+        />
+        <field name="arch" type="xml">
+            <page name="l10n_mx_sat" position="inside">
+                <group string="Payment complements">
+                    <group>
+                        <field name="l10n_mx_sat_payment_mode" />
+                        <field
+                            name="l10n_mx_sat_payment_journal_id"
+                            invisible="l10n_mx_sat_payment_mode == 'none'"
+                        />
+                    </group>
+                    <group>
+                        <field
+                            name="l10n_mx_sat_payment_auto"
+                            invisible="l10n_mx_sat_payment_mode == 'none'"
+                        />
+                    </group>
+                </group>
+            </page>
+        </field>
+    </record>
+</odoo>

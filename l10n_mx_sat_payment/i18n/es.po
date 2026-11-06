@@ -1,0 +1,403 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_mx_sat_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 20:11+0000\n"
+"PO-Revision-Date: 2026-11-06 20:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__amount
+msgid "Amount"
+msgstr "Monto"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__amount_paid
+msgid "Amount Paid"
+msgstr "Importe pagado"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__l10n_mx_sat_document__sat_payment_state__done
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__l10n_mx_sat_payment__state__done
+msgid "Applied"
+msgstr "Aplicado"
+
+#. module: l10n_mx_sat_payment
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.l10n_mx_sat_payment_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.l10n_mx_sat_payment_view_list
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: l10n_mx_sat_payment
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.l10n_mx_sat_document_view_form
+msgid "Apply Payment"
+msgstr "Aplicar pago"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.actions.server,name:l10n_mx_sat_payment.l10n_mx_sat_document_action_apply_payments
+msgid "Apply Payment Complements"
+msgstr "Aplicar complementos de pago"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,help:l10n_mx_sat_payment.field_res_company__l10n_mx_sat_payment_auto
+msgid ""
+"Apply each payment complement as soon as it is downloaded from the SAT. "
+"Complements that cannot be applied stay pending."
+msgstr "Aplica cada complemento de pago en cuanto se descarga del SAT. Los complementos que no se puedan aplicar quedan pendientes."
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_res_company__l10n_mx_sat_payment_auto
+msgid "Apply payment complements on download"
+msgstr "Aplicar complementos de pago al descargar"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__beneficiary_account
+msgid "Beneficiary Account"
+msgstr "Cuenta beneficiaria"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__beneficiary_rfc
+msgid "Beneficiary bank RFC"
+msgstr "RFC del banco beneficiario"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model,name:l10n_mx_sat_payment.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__create_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__create_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__currency_code
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__currency_code
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__direction
+msgid "Direction"
+msgstr "Dirección"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_account_payment__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_document__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__display_name
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_res_company__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__res_company__l10n_mx_sat_payment_mode__none
+msgid "Do nothing"
+msgstr "No hacer nada"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model,name:l10n_mx_sat_payment.model_l10n_mx_sat_payment_line
+msgid "Document related to a SAT payment complement"
+msgstr "Documento relacionado de un complemento de pago del SAT"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__equivalence
+msgid "Equivalence"
+msgstr "Equivalencia"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_res_company__l10n_mx_sat_payment_journal_id
+msgid "Fallback bank journal"
+msgstr "Diario bancario de respaldo"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__folio
+msgid "Folio"
+msgstr "Folio"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_account_payment__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_document__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__id
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_res_company__id
+msgid "ID"
+msgstr "UUID"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__installment
+msgid "Installment"
+msgstr "Parcialidad"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,help:l10n_mx_sat_payment.field_res_company__l10n_mx_sat_payment_journal_id
+msgid ""
+"Journal of the payments whose bank account in the complement does not match "
+"any bank account of the company."
+msgstr "Diario de los pagos cuya cuenta bancaria en el complemento no coincide con ninguna cuenta bancaria de la compañía."
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__write_uid
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__write_date
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__res_company__l10n_mx_sat_payment_mode__link
+msgid "Link existing payments"
+msgstr "Vincular pagos existentes"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__res_company__l10n_mx_sat_payment_mode__create
+msgid "Link existing payments or create them"
+msgstr "Vincular pagos existentes o crearlos"
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid ""
+"No bank journal for the account %(account)s: add the bank account to the "
+"company or set a fallback journal."
+msgstr "No hay diario bancario para la cuenta %(account)s: agrega la cuenta bancaria a la compañía o configura un diario de respaldo."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "No registered payment matches the complement."
+msgstr "Ningún pago registrado coincide con el complemento."
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__operation_number
+msgid "Operation Number"
+msgstr "Número de operación"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__ordering_account
+msgid "Ordering Account"
+msgstr "Cuenta ordenante"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__ordering_bank
+msgid "Ordering bank"
+msgstr "Banco ordenante"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__ordering_rfc
+msgid "Ordering bank RFC"
+msgstr "RFC del banco ordenante"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__l10n_mx_sat_document__sat_payment_state__partial
+msgid "Partially applied"
+msgstr "Aplicado parcialmente"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__payment_id
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__payment_id
+msgid "Payment"
+msgstr "Pago"
+
+#. module: l10n_mx_sat_payment
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.l10n_mx_sat_document_view_form
+msgid "Payment Complement"
+msgstr "Complemento de pago"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_document__sat_payment_state
+msgid "Payment complement"
+msgstr "Complemento de pago"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_res_company__l10n_mx_sat_payment_mode
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.view_company_form
+msgid "Payment complements"
+msgstr "Complementos de pago"
+
+#. module: l10n_mx_sat_payment
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.l10n_mx_sat_document_view_search
+msgid "Payment complements applied"
+msgstr "Complementos de pago aplicados"
+
+#. module: l10n_mx_sat_payment
+#: model_terms:ir.ui.view,arch_db:l10n_mx_sat_payment.l10n_mx_sat_document_view_search
+msgid "Payment complements to apply"
+msgstr "Complementos de pago por aplicar"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__date
+msgid "Payment date"
+msgstr "Fecha de pago"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__payment_form
+msgid "Payment form"
+msgstr "Forma de pago"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model,name:l10n_mx_sat_payment.model_l10n_mx_sat_payment
+msgid "Payment of a SAT payment complement"
+msgstr "Pago de un complemento de pago del SAT"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model,name:l10n_mx_sat_payment.model_account_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_document__sat_payment_ids
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__previous_balance
+msgid "Previous Balance"
+msgstr "Saldo anterior"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__rate
+msgid "Rate"
+msgstr "Tipo de cambio"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__line_ids
+msgid "Related documents"
+msgstr "Documentos relacionados"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__remaining_balance
+msgid "Remaining Balance"
+msgstr "Saldo insoluto"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model,name:l10n_mx_sat_payment.model_l10n_mx_sat_document
+msgid "SAT Document"
+msgstr "Documento SAT"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__document_id
+msgid "SAT document"
+msgstr "Documento del SAT"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_account_payment__l10n_mx_sat_document_id
+msgid "SAT payment complement"
+msgstr "Complemento de pago del SAT"
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "SAT payment complement %(uuid)s applied to %(invoices)s."
+msgstr "Complemento de pago del SAT %(uuid)s aplicado a %(invoices)s."
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__series
+msgid "Series"
+msgstr "Serie"
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "Several payments match the complement: %(payments)s."
+msgstr "Varios pagos coinciden con el complemento: %(payments)s."
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment__state
+msgid "State"
+msgstr "Estado"
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "The complement has no related documents."
+msgstr "El complemento no tiene documentos relacionados."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "The currency %(code)s is not active."
+msgstr "La moneda %(code)s no está activa."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "The invoice %(name)s is not posted."
+msgstr "La factura %(name)s no está publicada."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "The invoice %(uuid)s of the complement is not registered."
+msgstr "La factura %(uuid)s del complemento no está registrada."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "The payment complement is cancelled."
+msgstr "El complemento de pago está cancelado."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid ""
+"The payment complements are not applied: choose what to do with them in the "
+"SAT tab of the company %(company)s."
+msgstr "Los complementos de pago no se aplican: elige qué hacer con ellos en la pestaña SAT de la compañía %(company)s."
+
+#. module: l10n_mx_sat_payment
+#. odoo-python
+#: code:addons/l10n_mx_sat_payment/models/l10n_mx_sat_payment.py:0
+msgid "The related invoices belong to several partners."
+msgstr "Las facturas relacionadas pertenecen a varios contactos."
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__l10n_mx_sat_document__sat_payment_state__pending
+#: model:ir.model.fields.selection,name:l10n_mx_sat_payment.selection__l10n_mx_sat_payment__state__pending
+msgid "To apply"
+msgstr "Por aplicar"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,field_description:l10n_mx_sat_payment.field_l10n_mx_sat_payment_line__uuid
+msgid "UUID"
+msgstr "UUID"
+
+#. module: l10n_mx_sat_payment
+#: model:ir.model.fields,help:l10n_mx_sat_payment.field_res_company__l10n_mx_sat_payment_mode
+msgid ""
+"What to do with the CFDI payment complements downloaded from the SAT: link "
+"them to a payment already registered on the related invoices, or also create"
+" the payment when none exists."
+msgstr "Qué hacer con los complementos de pago CFDI descargados del SAT: vincularlos a un pago ya registrado en las facturas relacionadas, o también crear el pago cuando no exista."

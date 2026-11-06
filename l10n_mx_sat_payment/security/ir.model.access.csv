@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_mx_sat_payment_sat_user,l10n_mx_sat.payment sat user,model_l10n_mx_sat_payment,l10n_mx_sat.group_sat_user,1,0,0,0
+access_l10n_mx_sat_payment_invoice,l10n_mx_sat.payment invoicing,model_l10n_mx_sat_payment,account.group_account_invoice,1,1,0,0
+access_l10n_mx_sat_payment_line_sat_user,l10n_mx_sat.payment.line sat user,model_l10n_mx_sat_payment_line,l10n_mx_sat.group_sat_user,1,0,0,0
+access_l10n_mx_sat_payment_line_invoice,l10n_mx_sat.payment.line invoicing,model_l10n_mx_sat_payment_line,account.group_account_invoice,1,0,0,0

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_payment_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.payment.form</field>
+        <field name="model">l10n_mx_sat.payment</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <header>
+                    <button
+                        name="action_apply"
+                        type="object"
+                        string="Apply"
+                        class="btn-primary"
+                        invisible="state == 'done'"
+                        groups="account.group_account_invoice"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="document_id" />
+                            <field name="date" />
+                            <field name="amount" />
+                            <field name="currency_code" />
+                            <field name="rate" />
+                            <field name="payment_form" />
+                            <field name="operation_number" />
+                            <field name="payment_id" />
+                        </group>
+                        <group>
+                            <field name="ordering_rfc" />
+                            <field name="ordering_bank" />
+                            <field name="ordering_account" />
+                            <field name="beneficiary_rfc" />
+                            <field name="beneficiary_account" />
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list>
+                            <field name="uuid" />
+                            <field name="series" />
+                            <field name="folio" />
+                            <field name="invoice_id" />
+                            <field name="installment" />
+                            <field name="previous_balance" />
+                            <field name="amount_paid" />
+                            <field name="remaining_balance" />
+                            <field name="currency_code" />
+                            <field name="equivalence" />
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_mx_sat_payment_view_list" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.payment.list</field>
+        <field name="model">l10n_mx_sat.payment</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" delete="0">
+                <field name="date" />
+                <field name="amount" />
+                <field name="currency_code" />
+                <field name="payment_form" />
+                <field name="ordering_account" />
+                <field name="beneficiary_account" />
+                <field name="payment_id" />
+                <field name="state" widget="badge" />
+                <button
+                    name="action_apply"
+                    type="object"
+                    string="Apply"
+                    icon="fa-check"
+                    invisible="state == 'done'"
+                    groups="account.group_account_invoice"
+                />
+            </list>
+        </field>
+    </record>
+</odoo>
