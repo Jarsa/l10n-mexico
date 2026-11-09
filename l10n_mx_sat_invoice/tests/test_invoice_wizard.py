@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from datetime import date
+from unittest.mock import patch
 
 from lxml import etree
 
@@ -495,3 +496,22 @@ class TestInvoiceWizard(AccountTestInvoicingCommon):
         self.assertEqual(moves.create_uid, self.user)
         self.assertEqual(documents.vendor_bill_id, moves)
         self.assertEqual(moves.invoice_line_ids.mapped("price_subtotal"), [1000, 1000])
+
+    def test_wizard_context_does_not_reach_attachments(self):
+        """The default_document_ids of the wizard holds ids of SAT documents:
+        Documents reads it as ir.attachment.document_ids (documents.document)
+        and fails with a missing record when it reaches the XML attachment."""
+        document = self._create_document()
+        Attachment = self.env.registry["ir.attachment"]
+        original_create = Attachment.create
+        contexts = []
+
+        def spy_create(records, vals_list):
+            contexts.append(dict(records.env.context))
+            return original_create(records, vals_list)
+
+        with patch.object(Attachment, "create", spy_create):
+            self._create_invoices(document)
+        self.assertTrue(contexts)
+        for context in contexts:
+            self.assertNotIn("default_document_ids", context)

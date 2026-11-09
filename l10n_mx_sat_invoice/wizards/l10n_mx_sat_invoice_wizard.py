@@ -108,8 +108,12 @@ class L10nMxSatInvoiceWizard(models.TransientModel):
             raise UserError("\n".join(rejections))
         # default_document_ids (the wizard context) must not reach the
         # attachments created on the invoice: other modules add one2many
-        # fields with that name (e.g. ir.attachment.document_ids).
-        Move = self.env["account.move"].with_context(**clean_context(self.env.context))
+        # fields with that name (e.g. ir.attachment.document_ids of Documents,
+        # which then looks for documents.document records with the ids of the
+        # SAT documents). The cleaned context must replace the current one:
+        # passed as kwargs it is merged into it and the key survives.
+        context = clean_context(self.env.context)
+        Move = self.env["account.move"].with_context(context)  # pylint: disable=context-overridden
         moves = Move
         for document in self.document_ids:
             moves |= Move._l10n_mx_sat_create_invoice(
