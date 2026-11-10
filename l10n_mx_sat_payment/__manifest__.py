@@ -4,7 +4,7 @@
     "name": "Mexico - Payments from SAT payment complements",
     "summary": "Link or create the payments of the CFDI payment complements "
     "downloaded from the SAT",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Accounting/Localizations",
     "website": "https://github.com/OCA/l10n-mexico",
     "author": "Jarsa, Odoo Community Association (OCA)",

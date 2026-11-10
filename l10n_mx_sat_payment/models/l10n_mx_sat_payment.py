@@ -241,28 +241,35 @@ class L10nMxSatPayment(models.Model):
             )
         # ponytail: the register wizard allocates the amount in invoice order;
         # ImpPagado per invoice is not enforced when one payment covers several.
-        register = (
-            self.env["account.payment.register"]
-            .with_context(active_model="account.move", active_ids=invoices.ids)
-            .create(
-                {
-                    "payment_date": self.date,
-                    "journal_id": journal.id,
-                    "currency_id": currency.id,
-                    "amount": self.amount,
-                    "group_payment": True,
-                    "communication": " ".join(
-                        filter(
-                            None,
-                            [
-                                f"{document.series or ''}{document.folio_number or ''}",
-                                document.uuid,
-                            ],
-                        )
-                    ),
-                }
-            )
+        Register = self.env["account.payment.register"].with_context(
+            active_model="account.move", active_ids=invoices.ids
         )
+        vals = {
+            "payment_date": self.date,
+            "journal_id": journal.id,
+            "currency_id": currency.id,
+            "amount": self.amount,
+            "group_payment": True,
+            "communication": " ".join(
+                filter(
+                    None,
+                    [
+                        f"{document.series or ''}{document.folio_number or ''}",
+                        document.uuid,
+                    ],
+                )
+            ),
+        }
+        # l10n_mx_cfdi_account, when installed, requires the SAT payment form
+        # on the register wizard: take it from the complement.
+        form_field = Register._fields.get("payment_form_id")
+        if form_field and self.payment_form:
+            vals["payment_form_id"] = (
+                self.env[form_field.comodel_name]
+                .search([("code", "=", self.payment_form)], limit=1)
+                .id
+            )
+        register = Register.create(vals)
         return register._create_payments()
 
 

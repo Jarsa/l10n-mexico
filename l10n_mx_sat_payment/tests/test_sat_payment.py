@@ -95,6 +95,19 @@ class TestSatPayment(TestInvoiceWizard):
             ),
         )
 
+    def _register_payment(self, invoice, payment_date):
+        Register = self.env["account.payment.register"].with_context(
+            active_model="account.move", active_ids=invoice.ids
+        )
+        vals = {"payment_date": payment_date, "journal_id": self.bank_journal.id}
+        # Required by l10n_mx_cfdi_account when it is installed
+        form_field = Register._fields.get("payment_form_id")
+        if form_field:
+            vals["payment_form_id"] = (
+                self.env[form_field.comodel_name].search([], limit=1).id
+            )
+        return Register.create(vals)._create_payments()
+
     def test_parse_complement(self):
         document, move = self._posted_invoice()
         complement = self._create_complement({document: 1160})
@@ -198,12 +211,7 @@ class TestSatPayment(TestInvoiceWizard):
     def test_link_existing_payment(self):
         self.company.l10n_mx_sat_payment_mode = "link"
         document, move = self._posted_invoice()
-        existing = (
-            self.env["account.payment.register"]
-            .with_context(active_model="account.move", active_ids=move.ids)
-            .create({"payment_date": "2026-02-16", "journal_id": self.bank_journal.id})
-            ._create_payments()
-        )
+        existing = self._register_payment(move, "2026-02-16")
         complement = self._create_complement({document: 1160})
         complement.action_apply_payments()
         self.assertEqual(complement.sat_payment_ids.payment_id, existing)
@@ -217,18 +225,10 @@ class TestSatPayment(TestInvoiceWizard):
         self.company.l10n_mx_sat_payment_mode = "link"
         document, move = self._posted_invoice()
         _other_document, other_move = self._posted_invoice()
-        Register = self.env["account.payment.register"]
-        payments = {}
-        for invoice in (other_move, move):
-            payments[invoice] = (
-                Register.with_context(
-                    active_model="account.move", active_ids=invoice.ids
-                )
-                .create(
-                    {"payment_date": "2026-02-15", "journal_id": self.bank_journal.id}
-                )
-                ._create_payments()
-            )
+        payments = {
+            invoice: self._register_payment(invoice, "2026-02-15")
+            for invoice in (other_move, move)
+        }
         complement = self._create_complement({document: 1160})
         complement.action_apply_payments()
         self.assertEqual(complement.sat_payment_ids.payment_id, payments[move])
