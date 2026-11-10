@@ -10,6 +10,7 @@ from odoo.exceptions import UserError, ValidationError
 from odoo.tests import new_test_user, tagged
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
+from odoo.addons.web.controllers.utils import clean_action
 
 # Fictitious RFCs: the SAT test RFC for the company and made-up ones for partners.
 COMPANY_RFC = "EKU9003173C9"
@@ -515,3 +516,11 @@ class TestInvoiceWizard(AccountTestInvoicingCommon):
         self.assertTrue(contexts)
         for context in contexts:
             self.assertNotIn("default_document_ids", context)
+
+    def test_single_invoice_opens_the_form_view(self):
+        """The action of the invoices has the list view as view_id: the web
+        client must not get it as the form view."""
+        _wizard, action = self._create_invoices(self._create_document())
+        action = clean_action(action, self.env)
+        self.assertEqual(action["views"], [(False, "form")])
+        self.assertTrue(action["res_id"])
