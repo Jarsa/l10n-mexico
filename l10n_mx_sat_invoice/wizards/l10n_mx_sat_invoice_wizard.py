@@ -126,5 +126,7 @@ class L10nMxSatInvoiceWizard(models.TransientModel):
         )
         action["domain"] = [("id", "in", moves.ids)]
         if len(moves) == 1:
-            action.update({"res_id": moves.id, "view_mode": "form", "views": False})
+            # Not "views": False: the web client would rebuild it with the
+            # view_id of the action, which is the list view.
+            action.update({"res_id": moves.id, "views": [(False, "form")]})
         return action

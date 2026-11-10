@@ -112,6 +112,14 @@ which tax to configure.
 Changelog
 =========
 
+19.0.1.0.2
+----------
+
+- Creating a single invoice opens its form view again: the action was
+  returned without views and the web client loaded the list view of the
+  invoices as a form (an error with ``account_move_tier_validation``:
+  ``Name 'validation_status' is not defined``).
+
 19.0.1.0.1
 ----------
 
