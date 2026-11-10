@@ -36,9 +36,38 @@ class L10nMxSatDocument(models.Model):
                 else document.vendor_bill_id
             )
 
-    def _l10n_mx_sat_invoice_rejection(self):
-        """Reason why no invoice can be created from the document, or False."""
+    def _l10n_mx_sat_invoice_rejection(self, move=None):
+        """Reason why no invoice can be created from the document, or False.
+
+        :param move: existing invoice the document is going to be linked to,
+            instead of creating one
+        """
         self.ensure_one()
+        if move:
+            if not move.is_invoice() or move.state == "cancel":
+                return self.env._(
+                    "%(move)s is not an invoice that can be linked to a CFDI.",
+                    move=move.display_name,
+                )
+            if move.l10n_mx_sat_document_id:
+                return self.env._(
+                    "%(move)s is already linked to the CFDI %(uuid)s.",
+                    move=move.display_name,
+                    uuid=move.l10n_mx_sat_document_id.uuid,
+                )
+            if (
+                move.company_id != self.company_id
+                or move.is_sale_document() != (self.direction == "issued")
+                or (move.move_type in ("out_refund", "in_refund"))
+                != (self.voucher_type == "E")
+            ):
+                return self.env._(
+                    "The CFDI %(uuid)s does not correspond to %(move)s: the "
+                    "company, the direction (issued or received) and the type "
+                    "(invoice or credit note) must match.",
+                    uuid=self.uuid,
+                    move=move.display_name,
+                )
         if self.document_kind != "cfdi" or not self.has_xml:
             return self.env._("%(uuid)s is not a CFDI with XML.", uuid=self.uuid)
         if self.voucher_type not in ("I", "E"):
