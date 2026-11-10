@@ -96,7 +96,11 @@ class L10nMxSatInvoiceWizard(models.TransientModel):
         for wizard in self:
             wizard.account_id = wizard.journal_id.default_account_id
 
-    def action_create_invoices(self):
+    def _create_invoices(self):
+        """Create the draft invoices of the selected CFDIs.
+
+        :return: the created account.move records
+        """
         self.ensure_one()
         rejections = list(
             filter(
@@ -119,6 +123,10 @@ class L10nMxSatInvoiceWizard(models.TransientModel):
             moves |= Move._l10n_mx_sat_create_invoice(
                 document, self.journal_id, self.account_id
             )
+        return moves
+
+    def action_create_invoices(self):
+        moves = self._create_invoices()
         action = self.env["ir.actions.actions"]._for_xml_id(
             "account.action_move_out_invoice_type"
             if self.direction == "issued"
