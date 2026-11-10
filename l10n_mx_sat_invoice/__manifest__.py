@@ -3,7 +3,7 @@
 
 {
     "name": "Mexico - Invoices from SAT CFDIs",
-    "version": "19.0.1.0.2",
+    "version": "19.0.1.1.0",
     "category": "Accounting/Localizations",
     "summary": "Create customer invoices and vendor bills from the CFDIs "
     "downloaded from the SAT",
@@ -14,6 +14,7 @@
     "data": [
         "security/ir.model.access.csv",
         "wizards/l10n_mx_sat_invoice_wizard_views.xml",
+        "wizards/l10n_mx_sat_link_wizard_views.xml",
         "views/l10n_mx_sat_document_views.xml",
         "views/account_move_views.xml",
     ],

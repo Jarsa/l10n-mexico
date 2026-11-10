@@ -5,6 +5,15 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
+            <button name="button_draft" position="after">
+                <button
+                    name="action_l10n_mx_sat_link_document"
+                    type="object"
+                    string="Link SAT CFDI"
+                    groups="account.group_account_invoice"
+                    invisible="l10n_mx_sat_document_id or state == 'cancel' or move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"
+                />
+            </button>
             <field name="invoice_origin" position="after">
                 <field
                     name="l10n_mx_sat_document_id"

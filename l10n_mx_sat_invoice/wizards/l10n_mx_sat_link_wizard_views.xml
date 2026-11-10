@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="l10n_mx_sat_link_wizard_view_form" model="ir.ui.view">
+        <field name="name">l10n_mx_sat.link.wizard.form</field>
+        <field name="model">l10n_mx_sat.link.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="move_id" />
+                        <field name="currency_id" invisible="1" />
+                        <field name="amount_total" />
+                        <field name="only_partner" />
+                        <field name="document_domain" invisible="1" />
+                        <field
+                            name="document_id"
+                            domain="document_domain"
+                            required="1"
+                            options="{'no_create': True, 'no_open': True}"
+                        />
+                    </group>
+                    <group invisible="not document_id">
+                        <field name="document_partner" />
+                        <field name="document_date" />
+                        <field name="document_total" />
+                        <field name="document_currency" />
+                    </group>
+                </group>
+                <footer>
+                    <button
+                        name="action_link"
+                        string="Link"
+                        type="object"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

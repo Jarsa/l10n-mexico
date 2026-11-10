@@ -1,3 +1,8 @@
+## 19.0.1.1.0
+
+- New **Link SAT CFDI** button on the invoices: links an existing customer
+  invoice, vendor bill or credit note to a CFDI downloaded from the SAT.
+
 ## 19.0.1.0.2
 
 - Creating a single invoice opens its form view again: the action was

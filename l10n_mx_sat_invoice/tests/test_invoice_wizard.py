@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 from lxml import etree
 
+from odoo import Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.tests import new_test_user, tagged
 
@@ -524,3 +525,99 @@ class TestInvoiceWizard(AccountTestInvoicingCommon):
         action = clean_action(action, self.env)
         self.assertEqual(action["views"], [(False, "form")])
         self.assertTrue(action["res_id"])
+
+    def _create_bill(self, move_type="in_invoice", partner=None, amount=1160):
+        return self.env["account.move"].create(
+            {
+                "move_type": move_type,
+                "partner_id": (partner or self.vendor).id,
+                "invoice_date": "2026-02-10",
+                "invoice_line_ids": [
+                    Command.create(
+                        {"name": "Widget", "price_unit": amount, "tax_ids": False}
+                    )
+                ],
+            }
+        )
+
+    def _link_wizard(self, move, **vals):
+        action = move.action_l10n_mx_sat_link_document()
+        return (
+            self.env[action["res_model"]]
+            .with_user(self.user)
+            .with_context(**action["context"])
+            .create(vals)
+        )
+
+    def test_link_existing_invoice(self):
+        document = self._create_document()
+        self._create_document(total="2320.00")
+        self._create_document(issuer=("AAA010101AAA", "OTRO PROVEEDOR"))
+        bill = self._create_bill()
+        wizard = self._link_wizard(bill)
+        # The only CFDI of the vendor with the total of the bill is proposed
+        self.assertEqual(wizard.document_id, document)
+        self.assertEqual(wizard.document_partner, "SOLUCIONES DEMO")
+        candidates = self.env["l10n_mx_sat.document"].search(wizard.document_domain)
+        self.assertEqual(len(candidates), 2)
+        self.assertEqual(candidates.mapped("issuer_rfc"), [VENDOR_RFC] * 2)
+        wizard.only_partner = False
+        self.assertEqual(
+            len(self.env["l10n_mx_sat.document"].search(wizard.document_domain)), 3
+        )
+        wizard.document_id = document
+        wizard.action_link()
+        self.assertEqual(bill.l10n_mx_sat_document_id, document)
+        self.assertEqual(document.vendor_bill_id, bill)
+        self.assertEqual(document.invoice_id, bill)
+        # The bill is not modified
+        self.assertEqual(bill.state, "draft")
+        self.assertEqual(bill.invoice_line_ids.mapped("name"), ["Widget"])
+        self.assertEqual(bill.amount_total, 1160)
+        attachment = self.env["ir.attachment"].search(
+            [("res_model", "=", "account.move"), ("res_id", "=", bill.id)]
+        )
+        self.assertEqual(attachment.raw, document.attachment_id.raw)
+        self.assertIn("linked to the SAT CFDI", bill.message_ids[0].body)
+        self.assertNotIn("differs", bill.message_ids[0].body)
+        # A linked CFDI is no longer offered nor imported
+        other_bill = self._create_bill()
+        self.assertNotIn(
+            document,
+            self.env["l10n_mx_sat.document"].search(
+                self._link_wizard(other_bill, only_partner=False).document_domain
+            ),
+        )
+        with self.assertRaisesRegex(UserError, "already linked"):
+            self._create_invoices(document)
+
+    def test_link_posted_invoice_with_other_total(self):
+        document = self._create_document(direction="issued")
+        customer = self.env["res.partner"].create(
+            {"name": "Cliente Demo", "vat": CUSTOMER_RFC}
+        )
+        invoice = self._create_bill("out_invoice", customer, amount=1000)
+        invoice.action_post()
+        wizard = self._link_wizard(invoice)
+        # Totals differ: nothing is proposed, the user chooses
+        self.assertFalse(wizard.document_id)
+        wizard.document_id = document
+        wizard.action_link()
+        self.assertEqual(document.customer_invoice_id, invoice)
+        self.assertEqual(invoice.state, "posted")
+        self.assertIn("differs", invoice.message_ids[0].body)
+
+    def test_link_rejections(self):
+        document = self._create_document()
+        bill = self._create_bill()
+        with self.assertRaisesRegex(UserError, "does not correspond"):
+            self._create_bill("in_refund")._l10n_mx_sat_link_document(document)
+        with self.assertRaisesRegex(UserError, "does not correspond"):
+            self._create_bill("out_invoice")._l10n_mx_sat_link_document(document)
+        with self.assertRaisesRegex(UserError, "not an invoice"):
+            self.env["account.move"].create({})._l10n_mx_sat_link_document(document)
+        bill._l10n_mx_sat_link_document(document)
+        with self.assertRaisesRegex(UserError, "already linked to the CFDI"):
+            bill._l10n_mx_sat_link_document(self._create_document())
+        with self.assertRaisesRegex(UserError, "already linked"):
+            self._create_bill()._l10n_mx_sat_link_document(document)

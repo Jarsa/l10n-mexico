@@ -71,25 +71,88 @@ class AccountMove(models.Model):
         )
         with move._get_edi_creation() as move:
             move._l10n_mx_sat_fill_invoice(tree, document, account)
-        attachment = self.env["ir.attachment"].create(
-            {
-                "name": document.attachment_id.name or f"{document.uuid}.xml",
-                "raw": document.attachment_id.raw,
-                "mimetype": "application/xml",
-                "res_model": self._name,
-                "res_id": move.id,
-            }
-        )
+        attachment = move._l10n_mx_sat_attach_xml(document)
         move._l10n_mx_sat_after_import(tree, document, attachment)
         return move
 
+    def _l10n_mx_sat_attach_xml(self, document):
+        self.ensure_one()
+        source = document.attachment_id.with_context(bin_size=False)
+        Attachment = self.env["ir.attachment"]
+        # An existing invoice may already hold this very XML
+        return Attachment.search(
+            [
+                ("res_model", "=", self._name),
+                ("res_id", "=", self.id),
+                ("checksum", "=", source.checksum),
+            ],
+            limit=1,
+        ) or Attachment.create(
+            {
+                "name": source.name or f"{document.uuid}.xml",
+                "raw": source.raw,
+                "mimetype": "application/xml",
+                "res_model": self._name,
+                "res_id": self.id,
+            }
+        )
+
+    def _l10n_mx_sat_link_document(self, document):
+        """Link an existing invoice to a CFDI downloaded from the SAT.
+
+        The invoice is not modified: only the XML is attached and the CFDI
+        is linked to it.
+        """
+        self.ensure_one()
+        rejection = document._l10n_mx_sat_invoice_rejection(move=self)
+        if rejection:
+            raise UserError(rejection)
+        tree = etree.fromstring(document.attachment_id.with_context(bin_size=False).raw)
+        attachment = self._l10n_mx_sat_attach_xml(document)
+        self._l10n_mx_sat_after_import(tree, document, attachment)
+
+    def _l10n_mx_sat_link_candidate(self, domain):
+        """CFDI proposed to link the invoice: the only one of the partner with
+        the total of the invoice, among the ones matching ``domain``."""
+        self.ensure_one()
+        if not self.commercial_partner_id.vat:
+            return self.env["l10n_mx_sat.document"]
+        candidates = (
+            self.env["l10n_mx_sat.document"]
+            .search(domain)
+            .filtered(
+                lambda d: not self.currency_id.compare_amounts(
+                    d.total, self.amount_total
+                )
+            )
+        )
+        return candidates if len(candidates) == 1 else candidates.browse()
+
+    def action_l10n_mx_sat_link_document(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": self.env._("Link SAT CFDI"),
+            "res_model": "l10n_mx_sat.link.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": {"default_move_id": self.id},
+        }
+
     def _l10n_mx_sat_after_import(self, tree, document, attachment):
-        """Hook called once the invoice is filled and the XML attached."""
+        """Hook called once the invoice is filled (or an existing invoice is
+        being linked) and the XML attached."""
         self.ensure_one()
         document._link_invoice(self)
-        body = self.env._(
-            "Invoice created from the SAT CFDI %(uuid)s.", uuid=document.uuid
-        )
+        if self.l10n_mx_sat_document_id:
+            body = self.env._(
+                "Invoice created from the SAT CFDI %(uuid)s.", uuid=document.uuid
+            )
+        else:
+            self.l10n_mx_sat_document_id = document
+            body = self.env._(
+                "Invoice linked to the SAT CFDI %(uuid)s.", uuid=document.uuid
+            )
         related = tree.find("{*}CfdiRelacionados")
         if related is not None:
             uuids = ", ".join(
