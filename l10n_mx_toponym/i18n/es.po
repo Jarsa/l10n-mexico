@@ -4,18 +4,27 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0+e\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-25 16:29+0000\n"
-"PO-Revision-Date: 2025-06-25 10:30-0600\n"
-"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
+"POT-Creation-Date: 2026-11-17 10:50+0000\n"
+"PO-Revision-Date: 2026-11-17 10:50+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_MX\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
+msgid ""
+"%(created)s new entries loaded from Correos de México; %(skipped)s skipped "
+"because their municipality is unknown."
+msgstr ""
+"%(created)s entradas nuevas cargadas de Correos de México; %(skipped)s "
+"omitidas porque su municipio no se conoce."
 
 #. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_yuc_001
@@ -2653,16 +2662,6 @@ msgid "Country Code"
 msgstr "Código de país"
 
 #. module: l10n_mx_toponym
-#: model:ir.model.fields,help:l10n_mx_toponym.field_res_country__l10n_mx_edi_code
-msgid ""
-"Country code defined by the SAT in the catalog to CFDI version 4.0 and new "
-"complements. Will be used in the CFDI to indicate the country reference."
-msgstr ""
-"Código de país definido por el SAT en el catálogo para el CFDI versión 4.0 "
-"y nuevos complementos. Se utilizará en el CFDI para indicar la referencia "
-"del país."
-
-#. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_pue_035
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_slp_014
 msgid "Coxcatlán"
@@ -3000,8 +2999,13 @@ msgstr ""
 
 #. module: l10n_mx_toponym
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_l10n_mx_edi_res_locality__display_name
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_city__display_name
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_city_zip__display_name
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_country__display_name
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_partner__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre desplegado"
 
 #. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_son_024
@@ -4213,6 +4217,11 @@ msgstr ""
 
 #. module: l10n_mx_toponym
 #: model:ir.model.fields,field_description:l10n_mx_toponym.field_l10n_mx_edi_res_locality__id
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_city__id
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_city_zip__id
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_country__id
+#: model:ir.model.fields,field_description:l10n_mx_toponym.field_res_partner__id
 msgid "ID"
 msgstr ""
 
@@ -5666,6 +5675,11 @@ msgstr ""
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_mex_055
 msgid "Mexicaltzingo"
 msgstr ""
+
+#. module: l10n_mx_toponym
+#: model:ir.actions.server,name:l10n_mx_toponym.ir_cron_sepomex_refresh_ir_actions_server
+msgid "Mexico: update the zip catalog from Correos de México"
+msgstr "México: actualizar el catálogo de códigos postales de Correos de México"
 
 #. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_slp_021
@@ -11661,6 +11675,62 @@ msgstr ""
 "Puede utilizar este campo para realizar una búsqueda rápida."
 
 #. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_partner.py:0
+msgid "The ZIP code %(zip)s does not exist in the ZIP catalog."
+msgstr ""
+"El código postal %(zip)s no existe en el catálogo de códigos postales."
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_partner.py:0
+msgid "The ZIP code is missing."
+msgstr "Falta el código postal."
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_partner.py:0
+msgid "The city %(city)s does not match the ZIP code %(zip)s (%(expected)s)."
+msgstr ""
+"La ciudad %(city)s no corresponde al código postal %(zip)s (%(expected)s)."
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_partner.py:0
+msgid ""
+"The city %(city)s has no SAT municipality code. Select the city of the ZIP "
+"catalog."
+msgstr ""
+"La ciudad %(city)s no tiene clave SAT de municipio. Seleccione la ciudad del"
+" catálogo de códigos postales."
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_partner.py:0
+msgid ""
+"The colony code %(code)s does not belong to the ZIP code %(zip)s. Valid "
+"colonies: %(colonies)s."
+msgstr ""
+"La clave de colonia %(code)s no pertenece al código postal %(zip)s. Colonias"
+" válidas: %(colonies)s."
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_partner.py:0
+msgid ""
+"The state %(state)s does not match the ZIP code %(zip)s (%(expected)s)."
+msgstr ""
+"El estado %(state)s no corresponde al código postal %(zip)s (%(expected)s)."
+
+#. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
+msgid "The zip catalog could not be downloaded from Correos de México: %s"
+msgstr ""
+"No se pudo descargar el catálogo de códigos postales de Correos de México: "
+"%s"
+
+#. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_pue_175
 msgid "Tianguismanalco"
 msgstr ""
@@ -12444,6 +12514,11 @@ msgid "Unión de Tula"
 msgstr ""
 
 #. module: l10n_mx_toponym
+#: model_terms:ir.ui.view,arch_db:l10n_mx_toponym.city_zip_tree
+msgid "Update from Correos de México"
+msgstr "Actualizar desde Correos de México"
+
+#. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_son_066
 msgid "Ures"
 msgstr ""
@@ -13077,8 +13152,8 @@ msgstr ""
 #. module: l10n_mx_toponym
 #: model:ir.model.constraint,message:l10n_mx_toponym.constraint_res_city_zip_name_city_uniq
 msgid ""
-"You already have a zip with that code in the same city. The zip code must "
-"be unique within it's city"
+"You already have a zip with that code in the same city. The zip code must be"
+" unique within its city"
 msgstr ""
 "Ya tienes un código postal con ese código en la misma ciudad. El código "
 "postal debe ser único dentro de su ciudad"
@@ -13339,6 +13414,12 @@ msgid "Zináparo"
 msgstr ""
 
 #. module: l10n_mx_toponym
+#. odoo-python
+#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
+msgid "Zip catalog updated"
+msgstr "Catálogo de códigos postales actualizado"
+
+#. module: l10n_mx_toponym
 #: model:res.city,name:l10n_mx_toponym.res_city_mx_mic_111
 msgid "Ziracuaretiro"
 msgstr ""
@@ -13429,31 +13510,3 @@ msgstr ""
 #: model:l10n_mx_edi.res.locality,name:l10n_mx_toponym.res_locality_mx_slp_02
 msgid "Ébano"
 msgstr ""
-
-#. module: l10n_mx_toponym
-#: model:ir.cron,cron_name:l10n_mx_toponym.ir_cron_sepomex_refresh
-msgid "Mexico: update the zip catalog from Correos de México"
-msgstr "México: actualizar el catálogo de códigos postales de Correos de México"
-
-#. module: l10n_mx_toponym
-#: model_terms:ir.ui.view,arch_db:l10n_mx_toponym.city_zip_tree
-msgid "Update from Correos de México"
-msgstr "Actualizar desde Correos de México"
-
-#. module: l10n_mx_toponym
-#. odoo-python
-#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
-msgid "The zip catalog could not be downloaded from Correos de México: %s"
-msgstr "No se pudo descargar el catálogo de códigos postales de Correos de México: %s"
-
-#. module: l10n_mx_toponym
-#. odoo-python
-#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
-msgid "Zip catalog updated"
-msgstr "Catálogo de códigos postales actualizado"
-
-#. module: l10n_mx_toponym
-#. odoo-python
-#: code:addons/l10n_mx_toponym/models/res_city_zip.py:0
-msgid "%(created)s new entries loaded from Correos de México; %(skipped)s skipped because their municipality is unknown."
-msgstr "%(created)s entradas nuevas cargadas de Correos de México; %(skipped)s omitidas porque su municipio no se conoce."

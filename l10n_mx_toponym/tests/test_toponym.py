@@ -160,3 +160,132 @@ class TestToponym(TransactionCase):
         self.assertEqual(
             partner.l10n_mx_edi_locality_id, zip_entry.l10n_mx_edi_locality_id
         )
+
+    def _create_address_catalog(self):
+        state = self.env["res.country.state"].search(
+            [("country_id", "=", self.mx_country.id)], limit=2
+        )
+        city = self.env["res.city"].create(
+            {
+                "name": "Test Municipality",
+                "state_id": state[0].id,
+                "country_id": self.mx_country.id,
+                "l10n_mx_edi_code": "999",
+            }
+        )
+        zips = self.Zip.create(
+            [
+                {
+                    "name": "99990",
+                    "city_id": city.id,
+                    "l10n_mx_edi_colony": colony,
+                    "l10n_mx_edi_colony_code": code,
+                }
+                for colony, code in (("Colony A", "0001"), ("Colony B", "0002"))
+            ]
+        )
+        return state, city, zips
+
+    def test_address_errors_valid(self):
+        """An address taken from the catalog has no errors."""
+        _state, _city, zips = self._create_address_catalog()
+        partner = self.env["res.partner"].create(
+            {"name": "Valid address", "zip_id": zips[0].id}
+        )
+        self.assertEqual(partner.l10n_mx_edi_colony_code, "0001")
+        self.assertFalse(partner._l10n_mx_toponym_get_address_errors())
+        # the colony code is optional
+        partner.l10n_mx_edi_colony_code = False
+        self.assertFalse(partner._l10n_mx_toponym_get_address_errors())
+
+    def test_address_errors_not_mexican(self):
+        """Foreign addresses are not checked."""
+        partner = self.env["res.partner"].create(
+            {"name": "Foreign address", "country_id": self.env.ref("base.us").id}
+        )
+        self.assertFalse(partner._l10n_mx_toponym_get_address_errors())
+
+    def test_address_errors_empty_catalog(self):
+        """Nothing is reported while the catalog has not been downloaded."""
+        self.Zip.search([("city_id.country_id", "=", self.mx_country.id)]).unlink()
+        partner = self.env["res.partner"].create(
+            {"name": "No catalog", "country_id": self.mx_country.id, "zip": "99991"}
+        )
+        self.assertFalse(partner._l10n_mx_toponym_get_address_errors())
+
+    def test_address_errors_zip(self):
+        """A missing or unknown ZIP code is reported."""
+        self._create_address_catalog()
+        partner = self.env["res.partner"].create(
+            {"name": "No zip", "country_id": self.mx_country.id}
+        )
+        errors = partner._l10n_mx_toponym_get_address_errors()
+        self.assertEqual(len(errors), 1)
+        self.assertIn("missing", errors[0])
+        partner.zip = "99991"
+        errors = partner._l10n_mx_toponym_get_address_errors()
+        self.assertEqual(len(errors), 1)
+        self.assertIn("99991", errors[0])
+
+    def test_address_errors_colony(self):
+        """A colony code of another ZIP code is reported with the valid ones."""
+        state, city, _zips = self._create_address_catalog()
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Wrong colony",
+                "country_id": self.mx_country.id,
+                "state_id": state[0].id,
+                "city_id": city.id,
+                "zip": "99990",
+                "l10n_mx_edi_colony_code": "0590",
+            }
+        )
+        errors = partner._l10n_mx_toponym_get_address_errors()
+        self.assertEqual(len(errors), 1)
+        self.assertIn("0590", errors[0])
+        self.assertIn("0001 Colony A, 0002 Colony B", errors[0])
+
+    def test_address_errors_zip_without_colonies(self):
+        """The colony code is not checked when the ZIP code has no colonies
+        in the catalog (entries typed by hand)."""
+        state, city, zips = self._create_address_catalog()
+        zips.write({"l10n_mx_edi_colony_code": False})
+        partner = self.env["res.partner"].create(
+            {
+                "name": "No colonies",
+                "country_id": self.mx_country.id,
+                "state_id": state[0].id,
+                "city_id": city.id,
+                "zip": "99990",
+                "l10n_mx_edi_colony_code": "0590",
+            }
+        )
+        self.assertFalse(partner._l10n_mx_toponym_get_address_errors())
+
+    def test_address_errors_city_and_state(self):
+        """City and state must be the ones of the ZIP code, and the city needs
+        its SAT municipality code."""
+        state, _city, _zips = self._create_address_catalog()
+        other_city = self.env["res.city"].create(
+            {
+                "name": "Handmade City",
+                "state_id": state[1].id,
+                "country_id": self.mx_country.id,
+            }
+        )
+        partner = self.env["res.partner"].create(
+            {
+                "name": "Wrong city",
+                "country_id": self.mx_country.id,
+                "state_id": state[1].id,
+                "city_id": other_city.id,
+                "zip": "99990",
+                "l10n_mx_edi_colony_code": "0001",
+            }
+        )
+        errors = partner._l10n_mx_toponym_get_address_errors()
+        self.assertEqual(len(errors), 3)
+        self.assertIn(state[1].name, errors[0])
+        self.assertIn("Handmade City", errors[1])
+        self.assertIn("Test Municipality", errors[1])
+        self.assertIn("SAT municipality code", errors[2])
