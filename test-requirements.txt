@@ -1,0 +1,1 @@
+odoo-addon-partner_vat_unique @ git+https://github.com/Jarsa/partner-contact.git@refs/pull/6/head#subdirectory=partner_vat_unique
